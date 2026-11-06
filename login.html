@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In — JEEVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div id="toast"></div>
+
+<div class="shell">
+
+  <div class="visual">
+    <div class="visual-bg"></div>
+    <div class="visual-grain"></div>
+    <div class="visual-vignette"></div>
+
+    <div class="visual-badge">
+      <div class="badge-mark"><div class="badge-mark-inner"></div></div>
+      <span class="badge-name">Jeeva</span>
+    </div>
+
+    <div class="visual-collection">
+      <div class="vc-inner">SS&nbsp;2026&nbsp;Edit</div>
+    </div>
+
+    <div class="visual-body">
+      <div class="visual-kicker">Members access</div>
+      <h1 class="visual-headline">
+        Where refined<br>taste finds its<br><em>destination.</em>
+      </h1>
+      <p class="visual-tagline">
+        Exclusive access to curated collections,<br>
+        early drops, and personalised recommendations<br>
+        crafted for you.
+      </p>
+      <div class="visual-dots">
+        <div class="vdot"></div>
+        <div class="vdot"></div>
+        <div class="vdot"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-panel">
+
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+
+    <div class="fp-inner">
+
+      <div class="fp-mobile-brand">
+        <div class="fp-mobile-dot"></div>
+        JEEVA
+      </div>
+
+      <div class="fp-eyebrow">
+        <div class="fp-eyebrow-line"></div>
+        <span class="fp-eyebrow-text">Member sign-in</span>
+      </div>
+
+      <h2 class="fp-title">Welcome<br><em>back.</em></h2>
+      <p class="fp-subtitle">Sign in to continue your curated shopping experience.</p>
+
+      <div class="field">
+        <label class="field-label" for="email">Email address</label>
+        <input class="field-input" type="email" id="email" placeholder="you@example.com" autocomplete="email" oninput="clearErr('email')">
+        <span class="field-icon">✉</span>
+        <div class="field-error" id="email-err">Enter a valid email address</div>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="password">Password</label>
+        <input class="field-input" type="password" id="password" placeholder="••••••••••" autocomplete="current-password" oninput="clearErr('password')">
+        <button class="field-toggle" onclick="togglePwd()" id="pwd-toggle" type="button" title="Show password">
+          <span id="toggle-icon">👁</span>
+        </button>
+        <div class="field-error" id="password-err">Password must be at least 8 characters</div>
+      </div>
+
+      <div class="options-row">
+        <label class="remember-label">
+          <input class="remember-check" type="checkbox" id="remember">
+          <span class="remember-text">Keep me signed in</span>
+        </label>
+        <a class="forgot-link" href="#" onclick="handleForgot(event)">Forgot password?</a>
+      </div>
+
+      <button class="btn-signin" id="signin-btn" onclick="handleSignIn()">
+        <span class="btn-label">Sign In</span>
+        <div class="btn-spinner"><div class="spinner-ring"></div></div>
+      </button>
+
+      <div class="divider">
+        <div class="divider-line"></div>
+        <span class="divider-text">or continue with</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="social-row">
+        <button class="btn-social" onclick="socialLogin('Google')">
+          <span class="social-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.27 9.76A7.08 7.08 0 0 1 12 4.9c1.88 0 3.57.66 4.89 1.74l3.64-3.64A12 12 0 0 0 0 12c0 2 .5 3.88 1.36 5.54l4.02-3.1A7.1 7.1 0 0 1 4.9 12c0-.77.13-1.52.37-2.24Z"/><path fill="#FBBC05" d="M12 19.1c-1.95 0-3.73-.62-5.17-1.67l-4.02 3.1A12 12 0 0 0 12 24c3.16 0 6.04-1.16 8.22-3.06l-3.81-2.96A7.07 7.07 0 0 1 12 19.1Z"/><path fill="#4285F4" d="M23.9 12.22c0-.84-.08-1.65-.22-2.44H12v4.62h6.7c-.3 1.54-1.18 2.84-2.49 3.7l3.8 2.96C21.96 18.97 23.9 15.83 23.9 12.22Z"/><path fill="#34A853" d="M6.83 17.43A7.09 7.09 0 0 1 4.9 12c0-.77.13-1.52.37-2.24L1.25 6.66A12.02 12.02 0 0 0 0 12c0 1.93.46 3.76 1.27 5.38l4.02-3.1.54-.85Z" opacity=".1"/></svg>
+          </span>
+          Google
+        </button>
+        <button class="btn-social" onclick="socialLogin('Apple')">
+          <span class="social-icon">
+            <svg width="15" height="17" viewBox="0 0 814 1000" fill="rgba(255,255,255,0.7)"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 384.1 0 261.2 0 144.8 0 68.6 23.7 55.6 45.5 54.7c19.3-.5 143.3 15.8 200.6 87.2 27.7 34.3 48.5 85.3 48.5 149.1 0 90.2-62.3 168.5-150 168.5-40.6 0-73.2-19.3-96.2-44.2 9-37 34.9-92.9 77.2-127.9 25.5-21.3 67.6-44.2 105.7-56.3 8.2-2.7 16.2-5.3 24.1-7.8 28.5-19.1 51.5-45.8 51.5-69.9 0-24.3-21.9-49.5-60.5-49.5-67.2 0-109.4 58-109.4 58s-.2.3-.5.8c-14.4 22.6-21.2 55.5-21.2 71.2 0 50.8 25.4 97.9 47.5 124.2-2.7 1.3-5.5 2.5-8.3 3.7C190.5 453 129 381.4 117 367.8c-9-10.3-15.7-17.9-20.8-23.5C92.8 340 86.8 333 86.8 324.7c0-19.8 45.5-53 54.5-59.3 5.2-3.6 10.3-7.2 15.5-10.7v-.5C69.2 178.3 0 108.4 0 44.2 0 19.3 7.3.3 7.3.3S155 5.7 252 93.6c30.7 27.3 56 60.7 72.7 95 13 26.4 19 54.1 18 79.1-.5 14.5-4.2 55.8-42.7 92.8-32.2 31-74.5 38.4-98.3 39.1-2.8.1-5.7.2-8.5.2zM633.5 467.1c11.5-3.6 22-9.2 30.7-16.5 41.2-34.6 59.7-82.9 62.3-93.8.3-1.4.6-2.8.8-4.2-3.7-1.3-7.5-2.7-11.3-4.2-54.7-21-109.8-67.5-109.8-150.7 0-55.6 23.3-103 61.5-137.3 11.2-10.1 18-16.5 18-16.5s-39.3-27.8-90-27.8c-83.4 0-157.7 61.1-157.7 165.9 0 67.3 29.5 136.5 84.7 181.7 23.8 19.8 50.8 33.2 78.8 38.6 8 1.5 16.2 2.1 24.5 1.9 2.9-.1 5.7-.5 8.5-1.1z"/></svg>
+          </span>
+          Apple
+        </button>
+      </div>
+
+      <p class="fp-foot">
+        New to JEEVA? <a href="signup.html">Create your account →</a>
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- Load external API module first so window.API is available -->
+<script src="api.js"></script>
+
+<script>
+// ---- Backend connection ----
+const API_BASE = 'http://localhost:5000/api';
+
+function validate() {
+  const email = document.getElementById('email').value.trim();
+  const pwd   = document.getElementById('password').value;
+  let ok = true;
+
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    showFieldErr('email');ok=false;
+  }
+  if(pwd.length < 8){
+    showFieldErr('password');ok=false;
+  }
+  return ok;
+}
+
+function showFieldErr(id){
+  const inp = document.getElementById(id);
+  const err = document.getElementById(id+'-err');
+  inp.classList.add('has-error');
+  err.classList.add('show');
+}
+
+function clearErr(id){
+  const inp = document.getElementById(id);
+  const err = document.getElementById(id+'-err');
+  inp.classList.remove('has-error');
+  err.classList.remove('show');
+  if(inp.value.length > 0) inp.classList.add('is-valid');
+  else inp.classList.remove('is-valid');
+}
+
+async function handleSignIn(){
+  if(!validate()) return;
+
+  const btn = document.getElementById('signin-btn');
+  btn.classList.add('loading');
+
+  try {
+    const email    = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+
+    if(typeof window.API === 'undefined'){
+      throw new Error('API not loaded. Check api.js is in the same folder.');
+    }
+
+    await window.API.login(email, password);
+    showToast('Welcome back to JEEVA ✦', 'ok');
+    setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+
+  } catch(err) {
+    btn.classList.remove('loading');
+    showToast(err.message || 'Login failed', 'err');
+  }
+}
+
+function togglePwd(){
+  const inp   = document.getElementById('password');
+  const icon  = document.getElementById('toggle-icon');
+  const shown = inp.type === 'text';
+  inp.type    = shown ? 'password' : 'text';
+  icon.textContent = shown ? '👁' : '🙈';
+}
+
+async function handleForgot(e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  if (!email) { showFieldErr('email'); return; }
+
+  try {
+    await window.API.forgotPassword(email);
+    showToast('Reset link sent — check your inbox ✓', 'ok');
+  } catch (err) {
+    showToast(err.message || 'Could not send reset email.', 'err');
+  }
+}
+
+function socialLogin(provider){
+  showToast(`${provider} sign-in coming soon`);
+}
+
+let toastTimer;
+function showToast(msg, type=''){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show '+(type||'');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.className='',3500);
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter') handleSignIn();
+});
+
+document.querySelectorAll('.field-input').forEach(inp=>{
+  inp.addEventListener('focus',()=>{
+    inp.closest('.field').style.transform = 'translateY(-1px)';
+    inp.closest('.field').style.transition = 'transform 0.3s';
+  });
+  inp.addEventListener('blur',()=>{
+    inp.closest('.field').style.transform = '';
+  });
+});
+</script>
+</body>
+</html>

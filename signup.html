@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — JEEVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="signup.css">
+</head>
+<body>
+<div id="toast"></div>
+
+<div class="shell">
+
+  <div class="form-panel">
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+
+    <div class="fp-mobile-brand">
+      <div class="fp-mobile-dot"></div>
+      <span class="fp-mobile-name">JEEVA</span>
+    </div>
+
+    <div class="step-wrap" id="step-wrap">
+
+     
+      <div class="step-panel active" id="step-1">
+
+        <div class="step-header">
+          <div class="step-eyebrow">
+            <div class="step-eyebrow-line"></div>
+            <span class="step-eyebrow-text">Step 1 of 3 &nbsp;·&nbsp; Personal Details</span>
+          </div>
+          <h1 class="step-title">Create your<br><em>account.</em></h1>
+          <p class="step-sub">Join the JEEVA community. Unlock curated drops,<br>exclusive access and personalised recommendations.</p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="s1-fname">First Name</label>
+            <input class="field-input" id="s1-fname" type="text" placeholder="Arjun" autocomplete="given-name" oninput="liveValidate(this,'name')">
+            <span class="field-icon">✦</span>
+            <span class="field-tick">✓</span>
+            <div class="field-error" id="err-fname">Min 2 characters</div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="s1-lname">Last Name</label>
+            <input class="field-input" id="s1-lname" type="text" placeholder="Mehta" autocomplete="family-name" oninput="liveValidate(this,'name')">
+            <span class="field-icon">✦</span>
+            <span class="field-tick">✓</span>
+            <div class="field-error" id="err-lname">Min 2 characters</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="s1-email">Email Address</label>
+          <input class="field-input" id="s1-email" type="email" placeholder="arjun@example.com" autocomplete="email" oninput="liveValidate(this,'email')">
+          <span class="field-icon">✉</span>
+          <span class="field-tick">✓</span>
+          <div class="field-error" id="err-email">Enter a valid email</div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="s1-phone">Phone Number</label>
+          <input class="field-input" id="s1-phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel" oninput="liveValidate(this,'phone')">
+          <span class="field-icon">☎</span>
+          <span class="field-tick">✓</span>
+          <div class="field-error" id="err-phone">Enter a valid phone number</div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="s1-dob">Date of Birth</label>
+            <input class="field-input" id="s1-dob" type="date" style="color-scheme:dark" oninput="liveValidate(this,'dob')">
+            <div class="field-error" id="err-dob">Must be 16+</div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="s1-gender">Gender</label>
+            <select class="field-select" id="s1-gender">
+              <option value="">Prefer not to say</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Non-binary</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="s1-ref">Referral Code <span style="color:rgba(255,255,255,0.2)">(Optional)</span></label>
+          <input class="field-input" id="s1-ref" type="text" placeholder="JEEVA-XXXX" style="text-transform:uppercase" oninput="this.value=this.value.toUpperCase()">
+          <span class="field-icon" style="font-size:0.7rem">REF</span>
+          <div class="field-hint">Get ₹200 credit when your referrer shops</div>
+        </div>
+
+        <button class="btn-primary" onclick="goStep(2)">
+          <span class="btn-label">Continue →</span>
+          <div class="btn-spinner"><div class="spinner-ring"></div></div>
+        </button>
+
+        <div class="divider"><div class="div-line"></div><span class="div-text">or sign up with</span><div class="div-line"></div></div>
+        <div class="social-row">
+          <button class="btn-social" onclick="socialSignup('Google')">
+            <svg width="15" height="15" viewBox="0 0 24 24"><path fill="#EA4335" d="M5.27 9.76A7.08 7.08 0 0 1 12 4.9c1.88 0 3.57.66 4.89 1.74l3.64-3.64A12 12 0 0 0 0 12c0 2 .5 3.88 1.36 5.54l4.02-3.1A7.1 7.1 0 0 1 4.9 12c0-.77.13-1.52.37-2.24Z"/><path fill="#FBBC05" d="M12 19.1c-1.95 0-3.73-.62-5.17-1.67l-4.02 3.1A12 12 0 0 0 12 24c3.16 0 6.04-1.16 8.22-3.06l-3.81-2.96A7.07 7.07 0 0 1 12 19.1Z"/><path fill="#4285F4" d="M23.9 12.22c0-.84-.08-1.65-.22-2.44H12v4.62h6.7c-.3 1.54-1.18 2.84-2.49 3.7l3.8 2.96C21.96 18.97 23.9 15.83 23.9 12.22Z"/></svg>
+            Google
+          </button>
+          <button class="btn-social" onclick="socialSignup('Apple')">
+            <svg width="14" height="16" viewBox="0 0 814 1000" fill="rgba(255,255,255,0.65)"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-57.8-155.5-127.4C46 384.1 0 261.2 0 144.8 0 68.6 23.7 55.6 45.5 54.7c19.3-.5 143.3 15.8 200.6 87.2 27.7 34.3 48.5 85.3 48.5 149.1 0 90.2-62.3 168.5-150 168.5-40.6 0-73.2-19.3-96.2-44.2 9-37 34.9-92.9 77.2-127.9 25.5-21.3 67.6-44.2 105.7-56.3z"/></svg>
+            Apple
+          </button>
+          <button class="btn-social" onclick="socialSignup('Phone')">
+            <span style="font-size:0.9rem">📱</span>
+            Phone
+          </button>
+        </div>
+
+        <p class="fp-foot">Already have an account? <a href="login.html">Sign in →</a></p>
+      </div>
+
+      
+      <div class="step-panel" id="step-2">
+
+        <button class="btn-back" onclick="goStep(1,'back')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Back
+        </button>
+
+        <div class="step-header">
+          <div class="step-eyebrow">
+            <div class="step-eyebrow-line"></div>
+            <span class="step-eyebrow-text">Step 2 of 3 &nbsp;·&nbsp; Security & Style</span>
+          </div>
+          <h2 class="step-title">Secure your<br><em>profile.</em></h2>
+          <p class="step-sub">Set a strong password and personalise your JEEVA experience.</p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="s2-pwd">Create Password</label>
+          <input class="field-input" id="s2-pwd" type="password" placeholder="Min 8 characters" autocomplete="new-password" oninput="updateStrength(this.value);liveValidate(this,'pwd')">
+          <button class="field-toggle" onclick="togglePwd('s2-pwd','t1')" id="t1" type="button">👁</button>
+          <div class="field-error" id="err-pwd">Minimum 8 characters required</div>
+          <div class="pwd-strength">
+            <div class="strength-bars">
+              <div class="s-bar" id="sb1"></div>
+              <div class="s-bar" id="sb2"></div>
+              <div class="s-bar" id="sb3"></div>
+              <div class="s-bar" id="sb4"></div>
+            </div>
+            <div class="strength-text" id="strength-text">Enter a password</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="s2-cpwd">Confirm Password</label>
+          <input class="field-input" id="s2-cpwd" type="password" placeholder="Repeat your password" autocomplete="new-password" oninput="liveValidate(this,'cpwd')">
+          <button class="field-toggle" onclick="togglePwd('s2-cpwd','t2')" id="t2" type="button">👁</button>
+          <span class="field-tick">✓</span>
+          <div class="field-error" id="err-cpwd">Passwords do not match</div>
+        </div>
+
+        <div style="margin-bottom:18px">
+          <div class="field-label" style="display:block;margin-bottom:10px">Choose Your Avatar</div>
+          <div class="avatar-row" id="avatar-row">
+            <div class="avatar-opt active" onclick="selectAvatar(this)">🦁</div>
+            <div class="avatar-opt" onclick="selectAvatar(this)">🐺</div>
+            <div class="avatar-opt" onclick="selectAvatar(this)">🦊</div>
+            <div class="avatar-opt" onclick="selectAvatar(this)">🐉</div>
+            <div class="avatar-opt" onclick="selectAvatar(this)">🦅</div>
+            <div class="avatar-opt" onclick="selectAvatar(this)">🌙</div>
+          </div>
+        </div>
+
+        <div style="margin-bottom:20px">
+          <div class="field-label" style="display:block;margin-bottom:10px">Shopping Interests <span style="color:rgba(255,255,255,0.2)">(Pick any)</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px" id="interest-pills">
+            <button class="gender-pill" onclick="togglePill(this)">Fashion</button>
+            <button class="gender-pill" onclick="togglePill(this)">Electronics</button>
+            <button class="gender-pill" onclick="togglePill(this)">Home & Living</button>
+            <button class="gender-pill" onclick="togglePill(this)">Beauty</button>
+            <button class="gender-pill" onclick="togglePill(this)">Sports</button>
+            <button class="gender-pill" onclick="togglePill(this)">Books</button>
+            <button class="gender-pill" onclick="togglePill(this)">Footwear</button>
+            <button class="gender-pill" onclick="togglePill(this)">Watches</button>
+          </div>
+        </div>
+
+        <label class="check-label">
+          <input class="check-box" type="checkbox" id="newsletter" checked>
+          <span class="check-text">Send me exclusive early-access drops, style edits and member offers. I can opt out anytime.</span>
+        </label>
+
+        <label class="check-label">
+          <input class="check-box" type="checkbox" id="sms-opt">
+          <span class="check-text">Enable SMS alerts for order updates and flash sales.</span>
+        </label>
+
+        <label class="check-label" style="margin-bottom:22px">
+          <input class="check-box" type="checkbox" id="terms">
+          <span class="check-text">I agree to JEEVA's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I am 16 years or older.</span>
+        </label>
+
+        <button class="btn-primary" onclick="goStep(3)">
+          <span class="btn-label">Continue →</span>
+          <div class="btn-spinner"><div class="spinner-ring"></div></div>
+        </button>
+
+      </div>
+
+      
+      <div class="step-panel" id="step-3">
+
+        <button class="btn-back" onclick="goStep(2,'back')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          Back
+        </button>
+
+        <div class="step-header">
+          <div class="step-eyebrow">
+            <div class="step-eyebrow-line"></div>
+            <span class="step-eyebrow-text">Step 3 of 3 &nbsp;·&nbsp; Verify Identity</span>
+          </div>
+          <h2 class="step-title">One last<br><em>step.</em></h2>
+          <p class="step-sub" id="otp-desc">We've sent a 6-digit code to your email.<br>Enter it below to verify your account.</p>
+        </div>
+
+        <div style="margin-bottom:8px">
+          <div class="field-label" style="display:block;margin-bottom:12px">Verification Code</div>
+          <div class="otp-row" id="otp-row">
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="otpInput(this,0)" onkeydown="otpKey(event,0)">
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="otpInput(this,1)" onkeydown="otpKey(event,1)">
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="otpInput(this,2)" onkeydown="otpKey(event,2)">
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="otpInput(this,3)" onkeydown="otpKey(event,3)">
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="otpInput(this,4)" onkeydown="otpKey(event,4)">
+            <input class="otp-box" maxlength="1" type="text" inputmode="numeric" pattern="[0-9]" oninput="otpInput(this,5)" onkeydown="otpKey(event,5)">
+          </div>
+          <div style="font-size:0.68rem;color:rgba(255,255,255,0.22);margin-top:10px;font-family:'DM Mono',monospace">
+            Use <strong style="color:rgba(200,169,110,0.6)">123456</strong> for demo &nbsp;·&nbsp; 
+            <span id="resend-wrap">
+              <a href="#" id="resend-link" onclick="resendOTP(event)" style="color:rgba(200,169,110,0.5);text-decoration:none;transition:color 0.2s">Resend code</a>
+            </span>
+            <span id="resend-timer" style="display:none;color:rgba(255,255,255,0.25)">Resend in <span id="timer-count">30</span>s</span>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07)">
+          <div class="field-label" style="display:block;margin-bottom:12px">Default Delivery Address <span style="color:rgba(255,255,255,0.2)">(Optional — add now or later)</span></div>
+          <div class="field">
+            <label class="field-label" for="s3-addr">Street Address</label>
+            <input class="field-input" id="s3-addr" type="text" placeholder="House no., Street, Area">
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="s3-city">City</label>
+              <input class="field-input" id="s3-city" type="text" placeholder="Bengaluru">
+            </div>
+            <div class="field">
+              <label class="field-label" for="s3-pin">PIN Code</label>
+              <input class="field-input" id="s3-pin" type="text" placeholder="560001" maxlength="6" inputmode="numeric">
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="s3-state">State</label>
+            <select class="field-select" id="s3-state">
+              <option value="">Select State</option>
+              <option>Karnataka</option><option>Maharashtra</option><option>Delhi</option>
+              <option>Tamil Nadu</option><option>Telangana</option><option>Gujarat</option>
+              <option>Rajasthan</option><option>West Bengal</option><option>Kerala</option>
+              <option>Andhra Pradesh</option><option>Punjab</option><option>Uttar Pradesh</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-primary" id="verify-btn" onclick="verifyOTP()">
+          <span class="btn-label">Create My Account →</span>
+          <div class="btn-spinner"><div class="spinner-ring"></div></div>
+        </button>
+
+      </div>
+
+      
+      <div class="step-panel" id="step-success">
+        <div class="success-screen">
+          <div class="success-ring">✦</div>
+          <h2 class="success-title">Welcome to<br><em>JEEVA.</em></h2>
+          <p class="success-sub" id="success-msg">Your account has been created.<br>You're now part of a community with remarkable taste.</p>
+          <div class="success-perks">
+            <div class="sp-row"><span class="sp-icon">🎁</span> ₹500 welcome credit added to your wallet</div>
+            <div class="sp-row"><span class="sp-icon">✦</span> Early access to the SS 2025 drop unlocked</div>
+            <div class="sp-row"><span class="sp-icon">🚚</span> Free shipping on your first 3 orders</div>
+            <div class="sp-row"><span class="sp-icon">🏷</span> Member-only pricing on 12,000+ products</div>
+          </div>
+          <button class="btn-primary" onclick="goToShop()" style="margin-bottom:0">
+            <span class="btn-label">Start Shopping →</span>
+            <div class="btn-spinner"><div class="spinner-ring"></div></div>
+          </button>
+          <button class="btn-ghost" onclick="window.location.href='login.html'">Sign in instead</button>
+        </div>
+      </div>
+
+    </div><!-- /step-wrap -->
+  </div>
+
+  <div class="visual">
+    <div class="visual-bg"></div>
+    <div class="visual-grain"></div>
+    <div class="visual-vignette"></div>
+
+    <div class="visual-brand">
+      <div class="brand-mark"><div class="brand-dot"></div></div>
+      <span class="brand-name">Jeeva</span>
+    </div>
+
+    <div class="visual-progress" id="visual-progress">
+      <div class="vp-step s1 done" id="vps1"></div>
+      <div class="vp-step s2" id="vps2"></div>
+      <div class="vp-step s3" id="vps3"></div>
+      <span class="vp-label">Step <span id="vp-num">1</span> of 3</span>
+    </div>
+
+    <div class="visual-tag">
+      <div class="vt-text">New Member</div>
+    </div>
+
+    <div class="visual-body">
+      <div class="vb-kicker" id="vis-kicker">Join the community</div>
+      <h2 class="vb-headline" id="vis-headline">
+        Your style,<br>your <em>story</em><br>starts here.
+      </h2>
+      <div class="vb-perks" id="vis-perks">
+        <div class="vb-perk">
+          <div class="vb-perk-icon">✦</div>
+          Curated drops before they go public
+        </div>
+        <div class="vb-perk">
+          <div class="vb-perk-icon">🎁</div>
+          ₹500 welcome credit on first order
+        </div>
+        <div class="vb-perk">
+          <div class="vb-perk-icon">🚚</div>
+          Free shipping on first 3 orders
+        </div>
+        <div class="vb-perk">
+          <div class="vb-perk-icon">♻</div>
+          Earn loyalty points on every purchase
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+// ---- Backend connection ----
+const API_BASE = 'http://localhost:5000/api';
+
+let currentStep = 1;
+const OTP_DEMO = '123456';
+
+const visuals = {
+  1:{kicker:'Join the community',headline:'Your style,<br>your <em>story</em><br>starts here.'},
+  2:{kicker:'Security & taste',headline:'Curate your<br>own <em>world.</em>'},
+  3:{kicker:'Almost there',headline:'One code<br>to unlock<br><em>everything.</em>'},
+};
+
+function goStep(n, dir='forward'){
+  if(n===2 && !validateStep1()) return;
+  if(n===3 && !validateStep2()) return;
+
+  const cur = document.getElementById('step-'+currentStep);
+  cur.classList.remove('active');
+
+  
+  const next = document.getElementById('step-'+n);
+  next.classList.remove('back');
+  if(dir==='back') next.classList.add('back');
+  next.classList.add('active');
+
+  currentStep = n;
+  updateProgress(n);
+  updateVisual(n);
+
+  if(n===3) startResendTimer();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function updateProgress(n){
+  ['vps1','vps2','vps3'].forEach((id,i)=>{
+    const el = document.getElementById(id);
+    el.className = 'vp-step s'+(i+1);
+    if(i+1 < n) el.classList.add('done');
+    else if(i+1 === n) el.classList.add('active');
+  });
+  document.getElementById('vp-num').textContent = n;
+}
+
+function updateVisual(n){
+  const v = visuals[n];
+  if(!v) return;
+  const kicker = document.getElementById('vis-kicker');
+  const headline = document.getElementById('vis-headline');
+  kicker.style.opacity='0';
+  headline.style.opacity='0';
+  setTimeout(()=>{
+    kicker.textContent = v.kicker;
+    headline.innerHTML = v.headline;
+    kicker.style.opacity='1';
+    headline.style.opacity='1';
+    kicker.style.transition='opacity 0.4s';
+    headline.style.transition='opacity 0.4s';
+  },200);
+}
+
+
+function validateStep1(){
+  let ok = true;
+  const fname = document.getElementById('s1-fname');
+  const lname = document.getElementById('s1-lname');
+  const email = document.getElementById('s1-email');
+  const phone = document.getElementById('s1-phone');
+
+  if(fname.value.trim().length < 2){ markErr(fname,'err-fname'); ok=false; }
+  else markOk(fname,'err-fname');
+
+  if(lname.value.trim().length < 2){ markErr(lname,'err-lname'); ok=false; }
+  else markOk(lname,'err-lname');
+
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){ markErr(email,'err-email'); ok=false; }
+  else markOk(email,'err-email');
+
+  if(phone.value.trim().length < 7){ markErr(phone,'err-phone'); ok=false; }
+  else markOk(phone,'err-phone');
+
+  if(!ok) showToast('Please fill in all required fields','err');
+  return ok;
+}
+
+function validateStep2(){
+  let ok = true;
+  const pwd = document.getElementById('s2-pwd');
+  const cpwd = document.getElementById('s2-cpwd');
+  const terms = document.getElementById('terms');
+
+  if(pwd.value.length < 8){ markErr(pwd,'err-pwd'); ok=false; }
+  else markOk(pwd,'err-pwd');
+
+  if(cpwd.value !== pwd.value || cpwd.value.length < 1){ markErr(cpwd,'err-cpwd'); ok=false; }
+  else markOk(cpwd,'err-cpwd');
+
+  if(!terms.checked){ showToast('Please agree to the Terms of Service','err'); ok=false; }
+
+  if(!ok && (pwd.value.length >= 8) && (cpwd.value === pwd.value)) showToast('Please agree to the Terms of Service','err');
+  else if(!ok) showToast('Please fix the errors above','err');
+  return ok;
+}
+
+
+function liveValidate(inp, type){
+  let valid = false;
+  if(type==='name') valid = inp.value.trim().length >= 2;
+  if(type==='email') valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inp.value.trim());
+  if(type==='phone') valid = inp.value.trim().length >= 7;
+  if(type==='dob'){
+    const d = new Date(inp.value);
+    const age = (Date.now()-d)/(1000*60*60*24*365.25);
+    valid = age >= 16;
+  }
+  if(type==='pwd') valid = inp.value.length >= 8;
+  if(type==='cpwd') valid = inp.value === document.getElementById('s2-pwd').value && inp.value.length > 0;
+
+  if(valid){ inp.classList.add('ok'); inp.classList.remove('err'); }
+  else { inp.classList.remove('ok'); }
+}
+
+function markErr(inp, errId){
+  inp.classList.add('err');inp.classList.remove('ok');
+  const e = document.getElementById(errId);
+  if(e) e.classList.add('show');
+}
+function markOk(inp, errId){
+  inp.classList.remove('err');inp.classList.add('ok');
+  const e = document.getElementById(errId);
+  if(e) e.classList.remove('show');
+}
+
+
+function updateStrength(pwd){
+  let score = 0;
+  if(pwd.length >= 8) score++;
+  if(/[A-Z]/.test(pwd)) score++;
+  if(/[0-9]/.test(pwd)) score++;
+  if(/[^A-Za-z0-9]/.test(pwd)) score++;
+
+  const colors = ['','#e05252','#e09052','#c8a96e','#52c87a'];
+  const labels = ['','Weak','Fair','Good','Strong'];
+  
+  for(let i=1;i<=4;i++){
+    const bar = document.getElementById('sb'+i);
+    bar.style.background = i<=score ? colors[score] : 'rgba(255,255,255,0.07)';
+  }
+  const label = document.getElementById('strength-text');
+  label.textContent = pwd.length ? labels[score] || 'Very Weak' : 'Enter a password';
+  label.style.color = colors[score] || 'rgba(255,255,255,0.3)';
+}
+
+
+function selectAvatar(el){
+  document.querySelectorAll('.avatar-opt').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+}
+function togglePill(el){
+  el.classList.toggle('active');
+}
+
+
+function togglePwd(inputId, btnId){
+  const inp = document.getElementById(inputId);
+  const btn = document.getElementById(btnId);
+  const shown = inp.type==='text';
+  inp.type = shown ? 'password' : 'text';
+  btn.textContent = shown ? '👁' : '🙈';
+}
+
+
+function otpInput(el, idx){
+  el.value = el.value.replace(/[^0-9]/g,'');
+  if(el.value){ el.classList.add('filled'); }
+  else { el.classList.remove('filled'); }
+  const boxes = document.querySelectorAll('.otp-box');
+  if(el.value && idx < 5) boxes[idx+1].focus();
+  const val = Array.from(boxes).map(b=>b.value).join('');
+  if(val.length===6) autoVerify(val);
+}
+
+function otpKey(e, idx){
+  const boxes = document.querySelectorAll('.otp-box');
+  if(e.key==='Backspace' && !boxes[idx].value && idx > 0){
+    boxes[idx-1].focus();boxes[idx-1].value='';boxes[idx-1].classList.remove('filled');
+  }
+  if(e.key==='ArrowLeft' && idx>0) boxes[idx-1].focus();
+  if(e.key==='ArrowRight' && idx<5) boxes[idx+1].focus();
+}
+
+function autoVerify(val){
+  if(val===OTP_DEMO){
+    document.getElementById('verify-btn').classList.add('loading');
+    setTimeout(()=>{ document.getElementById('verify-btn').classList.remove('loading'); verifyOTP(); }, 600);
+  }
+}
+
+// ---- Real registration call happens here, after the (demo) OTP check passes ----
+function verifyOTP(){
+  const boxes = document.querySelectorAll('.otp-box');
+  const val = Array.from(boxes).map(b=>b.value).join('');
+  if(val.length < 6){ showToast('Enter all 6 digits','err'); return; }
+
+  if(val !== OTP_DEMO){
+    showToast('Incorrect code — try 123456','err');
+    boxes.forEach(b=>{ b.classList.add('err'); setTimeout(()=>b.classList.remove('err'),600); });
+    return;
+  }
+
+  // OTP correct — now actually register (only once, inside showSuccess)
+  showSuccess();
+}
+
+
+let resendInterval;
+function startResendTimer(){
+  let t = 30;
+  document.getElementById('resend-wrap').style.display='none';
+  document.getElementById('resend-timer').style.display='inline';
+  document.getElementById('timer-count').textContent = t;
+  clearInterval(resendInterval);
+  resendInterval = setInterval(()=>{
+    t--;
+    document.getElementById('timer-count').textContent = t;
+    if(t<=0){
+      clearInterval(resendInterval);
+      document.getElementById('resend-timer').style.display='none';
+      document.getElementById('resend-wrap').style.display='inline';
+    }
+  },1000);
+}
+
+function resendOTP(e){
+  e.preventDefault();
+  showToast('New code sent to your email ✓','ok');
+  startResendTimer();
+}
+
+
+async function showSuccess() {
+  const btn = document.getElementById('verify-btn');
+  btn.classList.add('loading');
+
+  try {
+    const userData = {
+      firstName:   document.getElementById('s1-fname').value.trim(),
+      lastName:    document.getElementById('s1-lname').value.trim(),
+      email:       document.getElementById('s1-email').value.trim(),
+      phone:       document.getElementById('s1-phone').value.trim(),
+      password:    document.getElementById('s2-pwd').value,
+      dateOfBirth: document.getElementById('s1-dob').value,
+      gender:      document.getElementById('s1-gender').value,
+      avatar:      document.querySelector('.avatar-opt.active')?.textContent || '🦁',
+      interests:   [...document.querySelectorAll('.gender-pill.active')].map(p => p.textContent),
+      newsletter:  document.getElementById('newsletter').checked,
+      smsAlerts:   document.getElementById('sms-opt').checked,
+      referralCode:document.getElementById('s1-ref').value.trim(),
+      address: {
+        street:  document.getElementById('s3-addr').value,
+        city:    document.getElementById('s3-city').value,
+        state:   document.getElementById('s3-state').value,
+        pincode: document.getElementById('s3-pin').value,
+      }
+    };
+
+    await window.API.register(userData);
+
+    btn.classList.remove('loading');
+
+    // Update success message with user's name
+    const fname = userData.firstName;
+    document.getElementById('success-msg').innerHTML =
+      `Your account is live, <strong style="color:#f4ede2">${fname}</strong>.<br>
+       You're now part of a community with remarkable taste.`;
+
+    // Show success screen
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('step-success').classList.add('active');
+
+  } catch (err) {
+    btn.classList.remove('loading');
+    showToast(err.message || 'Registration failed. Please try again.', 'err');
+  }
+}
+function goToShop(){
+  const btn = document.querySelector('#step-success .btn-primary');
+  btn.classList.add('loading');
+  setTimeout(()=>{ window.location.href = 'index.html'; },1200);
+}
+
+
+function socialSignup(provider){
+  showToast(`${provider} sign-up coming soon`);
+}
+
+
+let toastTimer;
+function showToast(msg, type=''){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show '+(type||'');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.className='',3500);
+}
+
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('s1-fname').focus();
+  document.getElementById('s1-email').addEventListener('blur',()=>{
+    const e = document.getElementById('s1-email').value;
+    if(e) document.getElementById('otp-desc').innerHTML = `We've sent a 6-digit code to <strong style="color:#f4ede2">${e}</strong>.<br>Enter it below to verify your account.`;
+  });
+});
+</script>
+<script src="api.js"></script>
+</body>
+</html>

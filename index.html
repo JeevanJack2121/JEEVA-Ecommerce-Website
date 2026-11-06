@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JEEVA — Modern Commerce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0d090"/>
+      <stop offset="100%" stop-color="#c8a96e"/>
+    </linearGradient>
+  </defs> 
+</svg>
+
+<nav id="navbar"> 
+
+  <!-- Brand -->
+  <div class="nav-brand" onclick="navigate('home')">
+    <div class="nav-brand-logomark"><span>J</span></div>
+    <span class="nav-brand-text">Jeeva</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="#" onclick="navigate('home');return false" class="active" data-page="home">Home</a>
+    <a href="#" onclick="navigate('products');return false" data-page="products" class="has-dd">Shop</a>
+    <a href="#" onclick="navigate('category');return false" data-page="category" class="has-dd">Categories</a>
+    <a href="#" onclick="navigate('about');return false" data-page="about">About</a>
+    <a href="#" onclick="navigate('contact');return false" data-page="contact">Contact</a>
+  </div>
+
+  <div class="nav-actions">
+
+    <div class="nav-search">
+      <input type="text" id="nav-search-input" placeholder="Search products…" onkeydown="if(event.key==='Enter')doNavSearch()">
+      <button class="nav-search-btn" onclick="doNavSearch()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </div>
+
+    <button class="nav-btn" onclick="navigate('cart')" title="My Cart">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+
+    <button class="nav-btn" title="Wishlist" style="display:none" id="nav-wishlist">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </button>
+
+    <div class="nav-auth">
+      <a href="login.html" class="btn-login">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Log in
+      </a>
+      <a href="signup.html" class="btn-signup">
+        <span class="btn-signup-icon">🎁</span>
+        Sign up
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <span></span><span></span><span></span>
+  </div>
+
+</nav>
+
+<div id="mobile-menu">
+  <a href="#" onclick="navigate('home');toggleMobile();return false">Home</a>
+  <a href="#" onclick="navigate('products');toggleMobile();return false">Shop</a>
+  <a href="#" onclick="navigate('category');toggleMobile();return false">Categories</a>
+  <a href="#" onclick="navigate('about');toggleMobile();return false">About</a>
+  <a href="#" onclick="navigate('contact');toggleMobile();return false">Contact</a>
+  <a href="#" onclick="navigate('cart');toggleMobile();return false">🛒 My Cart</a>
+  <div class="mobile-auth-row">
+    <a href="login.html" class="btn-login" style="justify-content:center">Log in</a>
+    <a href="signup.html" class="btn-signup" style="justify-content:center">🎁 Sign up</a>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<div class="page active" id="page-home">
+
+  <div class="hero-slider" id="hero-slider">
+    <div class="hero-slide active">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1400&q=80')"></div>
+      <div class="hero-content">
+        <div class="hero-kicker">New Season 2026 Collection</div>
+        <h1 class="hero-title">Dress for the <em>Moments</em> that Matter</h1>
+        <p class="hero-desc">Curated premium clothing and accessories that blend timeless elegance with modern sensibility.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" onclick="navigate('products')">Shop Now →</button>
+          <button class="btn btn-outline" onclick="navigate('category')">Browse Categories</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1556742400-b5b7c512ea0f?w=1400&q=80')"></div>
+      <div class="hero-content">
+        <div class="hero-kicker">Electronics & Gadgets</div>
+        <h1 class="hero-title">Tech That <em>Elevates</em> Your Life</h1>
+        <p class="hero-desc">The latest in consumer electronics, from audio gear to cutting-edge smart home devices.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" onclick="navigate('products')">Explore Tech →</button>
+          <button class="btn btn-outline" onclick="navigate('category')">View All</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1400&q=80')"></div>
+      <div class="hero-content">
+        <div class="hero-kicker">Home & Living</div>
+        <h1 class="hero-title">Design Your <em>Perfect</em> Space</h1>
+        <p class="hero-desc">Transform your home with our handpicked selection of furniture, décor, and lifestyle essentials.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" onclick="navigate('products')">Shop Home →</button>
+          <button class="btn btn-outline" onclick="navigate('category')">Categories</button>
+        </div>
+      </div>
+    </div>
+    <div class="slider-arrows">
+      <button class="slider-arrow" onclick="slideDir(-1)">←</button>
+      <button class="slider-arrow" onclick="slideDir(1)">→</button>
+    </div>
+    <div class="slider-controls" id="slider-dots"></div>
+  </div>
+
+  <div class="features-strip">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon">🚚</div>
+          <div><div class="feature-title">Free Shipping</div><div class="feature-desc">On all orders above ₹999</div></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">↩</div>
+          <div><div class="feature-title">Easy Returns</div><div class="feature-desc">30-day hassle-free returns</div></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🔒</div>
+          <div><div class="feature-title">Secure Payment</div><div class="feature-desc">256-bit SSL encryption</div></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎧</div>
+          <div><div class="feature-title">24/7 Support</div><div class="feature-desc">Dedicated customer care</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="categories-section">
+    <div class="container">
+      <div class="section-label">Explore</div>
+      <h2 class="section-title">Shop by Category</h2>
+      <p class="section-sub">Discover our curated collections across every lifestyle</p>
+      <div class="category-grid" id="home-categories"></div>
+    </div>
+  </div>
+
+  <div style="padding:0 0 80px">
+    <div class="container">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+        <div>
+          <div class="section-label">Fresh Arrivals</div>
+          <h2 class="section-title">Latest Products</h2>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="navigate('products')">View All Products →</button>
+      </div>
+      <div class="products-grid" id="home-products"></div>
+    </div>
+  </div>
+
+  <div style="background:var(--bg2);border-top:1px solid var(--border);padding:80px 0">
+    <div class="container">
+      <div class="about-content-grid">
+        <div>
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">Built on Quality & Trust</h2>
+          <p style="color:var(--text2);font-size:0.9rem;line-height:1.8;margin-bottom:24px">Since 2018, JEEVA has been India's premium destination for curated lifestyle products. We believe shopping should be a pleasure — from the first click to the final delivery.</p>
+          <p style="color:var(--text2);font-size:0.9rem;line-height:1.8;margin-bottom:32px">Every product is handpicked by our expert buyers who travel the world to bring you the very best in fashion, electronics, and home living.</p>
+          <button class="btn btn-primary" onclick="navigate('about')">Learn More →</button>
+        </div>
+        <div class="img-block" style="border-radius:8px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;background:var(--surface)">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80" alt="About" style="width:100%;height:100%;object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="page" id="page-products">
+  <div class="container">
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="#" onclick="navigate('home');return false">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Shop</span>
+      </div>
+      <div class="page-header-inner">
+        <div>
+          <div class="section-label">All Products</div>
+          <h1 class="section-title">Shop Everything</h1>
+        </div>
+      </div>
+    </div>
+    <div class="shop-layout">
+
+      <aside class="sidebar" id="products-sidebar">
+        <div class="sidebar-box">
+          <div class="sidebar-title">Categories</div>
+          <div class="filter-options" id="category-filter"></div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Price Range</div>
+          <input type="range" id="price-range" min="0" max="5000" value="5000" oninput="updatePriceFilter(this.value)">
+          <div class="price-labels">
+            <span>₹0</span>
+            <span id="price-max-label">₹5000</span>
+          </div>
+          <div class="price-range-inputs">
+            <input type="number" class="price-input" id="price-min-inp" placeholder="Min" value="0" onchange="applyFilters()">
+            <input type="number" class="price-input" id="price-max-inp" placeholder="Max" value="5000" onchange="applyFilters()">
+          </div>
+        </div>
+        <div class="sidebar-box">
+          <div class="sidebar-title">Rating</div>
+          <div class="filter-options" id="rating-filter"></div>
+        </div>
+        <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="clearFilters()">Clear All Filters</button>
+      </aside>
+
+      <main class="shop-main">
+        <div class="shop-toolbar">
+          <div class="shop-toolbar-left">
+            <span class="results-count" id="results-count">Showing 24 products</span>
+            <div class="active-filters" id="active-filters"></div>
+          </div>
+          <select class="sort-select" id="sort-select" onchange="applyFilters()">
+            <option value="default">Sort: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+            <option value="newest">Newest First</option>
+          </select>
+        </div>
+        <div class="products-grid" id="products-grid"></div>
+      </main>
+    </div>
+  </div>
+</div>
+
+
+<div class="page" id="page-product-view">
+  <div class="container">
+    <div class="product-view">
+      <div class="breadcrumb" id="product-breadcrumb">
+        <a href="#" onclick="navigate('home');return false">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" onclick="navigate('products');return false">Shop</a>
+        <span class="breadcrumb-sep">›</span>
+        <span id="product-view-name">Product</span>
+      </div>
+      <div class="product-view-grid">
+
+        <div class="product-gallery">
+          <div class="gallery-main"><img id="gallery-main-img" src="" alt=""></div>
+          <div class="gallery-thumbs" id="gallery-thumbs"></div>
+        </div>
+
+        <div class="product-info">
+          <div class="product-info-cat" id="pv-cat"></div>
+          <h1 class="product-info-title" id="pv-title"></h1>
+          <div class="product-info-rating">
+            <div class="stars" id="pv-stars"></div>
+            <span class="rating-count" id="pv-rating-count"></span>
+          </div>
+          <div class="product-info-price">
+            <span class="price-main" id="pv-price"></span>
+            <span class="price-old" id="pv-old-price"></span>
+            <span class="price-save" id="pv-save" style="display:none"></span>
+          </div>
+          <hr class="product-divider">
+          <p class="product-desc" id="pv-desc"></p>
+          <div id="pv-sizes-wrap">
+            <div class="option-label">Select Size</div>
+            <div class="size-options" id="pv-sizes"></div>
+          </div>
+          <br>
+          <div class="option-label">Quantity</div>
+          <div class="qty-control">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <input class="qty-val" type="number" id="pv-qty" value="1" min="1" max="10">
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+          <div class="product-cta">
+            <button class="btn btn-primary btn-cart" onclick="addCurrentToCart()">Add to Cart</button>
+            <button class="btn btn-outline" onclick="navigate('cart')">View Cart</button>
+          </div>
+          <div class="product-meta">
+            <div class="product-meta-row"><span class="meta-key">SKU</span><span class="meta-val" id="pv-sku"></span></div>
+            <div class="product-meta-row"><span class="meta-key">Category</span><span class="meta-val" id="pv-meta-cat"></span></div>
+            <div class="product-meta-row"><span class="meta-key">Stock</span><span class="meta-val" id="pv-stock"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-tabs">
+        <div class="tabs-nav">
+          <button class="tab-btn active" onclick="switchTab('description')">Description</button>
+          <button class="tab-btn" onclick="switchTab('specifications')">Specifications</button>
+          <button class="tab-btn" onclick="switchTab('reviews')">Reviews</button>
+        </div>
+        <div class="tab-panel active" id="tab-description"></div>
+        <div class="tab-panel" id="tab-specifications"></div>
+        <div class="tab-panel" id="tab-reviews">
+          <div class="reviews-list" id="reviews-list"></div>
+        </div>
+      </div>
+
+      <div class="related-section">
+        <div class="section-label">You May Also Like</div>
+        <h3 class="section-title" style="font-size:1.5rem;margin-bottom:24px">Related Products</h3>
+        <div class="products-grid" id="related-products"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page" id="page-category">
+  <div class="category-page">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" onclick="navigate('home');return false">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Categories</span>
+      </div>
+      <div class="cat-hero">
+        <div class="about-hero-bg"></div>
+        <div style="position:relative;z-index:1">
+          <div class="section-label">Browse</div>
+          <h1 class="section-title">All Categories</h1>
+          <p style="color:var(--text2);font-size:0.9rem;max-width:400px;line-height:1.7">Explore our carefully curated collections spanning fashion, technology, home decor, and lifestyle essentials.</p>
+        </div>
+      </div>
+      <div class="cat-list-grid" id="cat-list-grid"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page" id="page-cart">
+  <div class="cart-page">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" onclick="navigate('home');return false">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Cart</span>
+      </div>
+      <div class="page-header-inner" style="padding-bottom:28px">
+        <div>
+          <div class="section-label">My Bag</div>
+          <h1 class="section-title">Shopping Cart</h1>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="navigate('products')">← Continue Shopping</button>
+      </div>
+      <div id="cart-content"></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page" id="page-checkout">
+  <div class="checkout-page">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" onclick="navigate('home');return false">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="#" onclick="navigate('cart');return false">Cart</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Checkout</span>
+      </div>
+      <div class="page-header-inner" style="padding-bottom:28px">
+        <div>
+          <div class="section-label">Secure Checkout</div>
+          <h1 class="section-title">Complete Your Order</h1>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text3)">
+          <span style="color:var(--green)">🔒</span> SSL Secured
+        </div>
+      </div>
+      <div class="checkout-grid">
+        <!-- Form -->
+        <div class="checkout-form-section">
+          <div class="form-section-title">Shipping Information</div>
+          <div class="form-grid" id="checkout-form">
+            <div class="form-group"><label class="form-label">First Name *</label><input class="form-input" id="cf-fname" placeholder="John"><div class="form-error" id="err-fname">Required</div></div>
+            <div class="form-group"><label class="form-label">Last Name *</label><input class="form-input" id="cf-lname" placeholder="Doe"><div class="form-error" id="err-lname">Required</div></div>
+            <div class="form-group"><label class="form-label">Email *</label><input class="form-input" id="cf-email" type="email" placeholder="john@example.com"><div class="form-error" id="err-email">Valid email required</div></div>
+            <div class="form-group"><label class="form-label">Phone *</label><input class="form-input" id="cf-phone" placeholder="+91 98765 43210"><div class="form-error" id="err-phone">Required</div></div>
+            <div class="form-group form-grid-full"><label class="form-label">Address *</label><input class="form-input" id="cf-address" placeholder="House no., Street, Area"><div class="form-error" id="err-address">Required</div></div>
+            <div class="form-group"><label class="form-label">City *</label><input class="form-input" id="cf-city" placeholder="Bengaluru"><div class="form-error" id="err-city">Required</div></div>
+            <div class="form-group"><label class="form-label">State *</label>
+              <select class="form-select" id="cf-state">
+                <option value="">Select State</option>
+                <option>Karnataka</option><option>Maharashtra</option><option>Delhi</option>
+                <option>Tamil Nadu</option><option>Telangana</option><option>Gujarat</option>
+                <option>Rajasthan</option><option>West Bengal</option><option>Kerala</option>
+              </select>
+              <div class="form-error" id="err-state">Required</div>
+            </div>
+            <div class="form-group"><label class="form-label">PIN Code *</label><input class="form-input" id="cf-pin" placeholder="560001" maxlength="6"><div class="form-error" id="err-pin">Valid 6-digit PIN required</div></div>
+            <div class="form-group form-grid-full"><label class="form-label">Delivery Notes</label><textarea class="form-textarea" id="cf-notes" placeholder="Any special instructions…"></textarea></div>
+          </div>
+          <div class="form-section-title" style="margin-top:32px">Payment Method</div>
+          <div class="payment-methods">
+            <label class="payment-option selected" id="pay-upi">
+              <input type="radio" name="payment" value="upi" checked onchange="selectPayment(this.closest('label'))"> 
+              <div class="payment-option-info"><div class="payment-option-name">UPI / PhonePe / GPay</div><div class="payment-option-desc">Instant payment via UPI</div></div>
+              <div class="payment-icons"><span class="payment-icon">UPI</span></div>
+            </label>
+            <label class="payment-option" id="pay-card">
+              <input type="radio" name="payment" value="card" onchange="selectPayment(this.closest('label'))">
+              <div class="payment-option-info"><div class="payment-option-name">Credit / Debit Card</div><div class="payment-option-desc">Visa, Mastercard, Rupay</div></div>
+              <div class="payment-icons"><span class="payment-icon">VISA</span><span class="payment-icon">MC</span></div>
+            </label>
+            <label class="payment-option" id="pay-cod">
+              <input type="radio" name="payment" value="cod" onchange="selectPayment(this.closest('label'))">
+              <div class="payment-option-info"><div class="payment-option-name">Cash on Delivery</div><div class="payment-option-desc">Pay when your order arrives</div></div>
+              <div class="payment-icons"><span class="payment-icon">COD</span></div>
+            </label>
+            <label class="payment-option" id="pay-emi">
+              <input type="radio" name="payment" value="emi" onchange="selectPayment(this.closest('label'))">
+              <div class="payment-option-info"><div class="payment-option-name">EMI</div><div class="payment-option-desc">0% interest on 3, 6, 12 months</div></div>
+              <div class="payment-icons"><span class="payment-icon">EMI</span></div>
+            </label>
+          </div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;padding:15px;font-size:0.95rem" onclick="placeOrder()">Place Order →</button>
+        </div>
+
+        <div class="checkout-summary">
+          <div class="summary-title">Order Summary</div>
+          <div class="checkout-items-list" id="checkout-items-list"></div>
+          <hr style="border:none;border-top:1px solid var(--border);margin-bottom:16px">
+          <div id="checkout-summary-rows"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page" id="page-order-confirmation">
+  <div class="confirm-page">
+    <div class="container">
+      <div class="confirm-icon">✓</div>
+      <h1 class="confirm-title">Order Confirmed!</h1>
+      <p class="confirm-subtitle">Thank you for shopping with JEEVA. Your order is being processed.</p>
+      <div class="confirm-order-box">
+        <div class="confirm-order-num" id="conf-order-num">#JVA-210790</div>
+        <div class="confirm-status">
+          <div class="status-dot"></div>
+          <span class="status-text" id="conf-status">Order Confirmed & Processing</span>
+        </div>
+        <div class="confirm-details" id="conf-details"></div>
+      </div>
+      <div class="confirm-steps">
+        <div class="confirm-step done"><div class="step-circle">✓</div><div class="step-label">Order Placed</div></div>
+        <div class="confirm-step active"><div class="step-circle">⚡</div><div class="step-label">Processing</div></div>
+        <div class="confirm-step"><div class="step-circle">📦</div><div class="step-label">Packed</div></div>
+        <div class="confirm-step"><div class="step-circle">🚚</div><div class="step-label">Shipped</div></div>
+        <div class="confirm-step"><div class="step-circle">🏠</div><div class="step-label">Delivered</div></div>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-primary" onclick="navigate('home')">Continue Shopping</button>
+        <button class="btn btn-outline" onclick="navigate('products')">Browse More</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="about-hero-bg"></div>
+    <div style="position:relative;z-index:1">
+      <div class="section-label">Est. 2018</div>
+      <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.2rem)">We Are <em>JEEVA</em></h1>
+      <p class="hero-desc">A premium e-commerce platform that brings the world's finest products to your doorstep.</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="about-stats" style="margin-top:48px">
+      <div class="stat-item"><div class="stat-num">2M+</div><div class="stat-label">Happy Customers</div></div>
+      <div class="stat-item"><div class="stat-num">50K+</div><div class="stat-label">Products Listed</div></div>
+      <div class="stat-item"><div class="stat-num">500+</div><div class="stat-label">Verified Brands</div></div>
+    </div>
+    <div class="about-content-grid">
+      <div>
+        <div class="section-label">Our Mission</div>
+        <h2 class="section-title">Quality Over Everything</h2>
+        <p style="color:var(--text2);font-size:0.9rem;line-height:1.8;margin-bottom:16px">We started JEEVA with a simple idea: online shopping should feel as good as walking into your favourite boutique. Too many platforms had become overwhelmed with choice — millions of products with no curation, no soul.</p>
+        <p style="color:var(--text2);font-size:0.9rem;line-height:1.8;margin-bottom:16px">Our team of 120+ experts across fashion, technology, and home living hand-verify every single product before it goes live on our platform. We test products for months before listing them.</p>
+        <p style="color:var(--text2);font-size:0.9rem;line-height:1.8;margin-bottom:24px">This obsessive commitment to quality is why over 2 million customers return to JEEVA every season.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="navigate('products')">Shop Now</button>
+          <button class="btn btn-outline" onclick="navigate('contact')">Get in Touch</button>
+        </div>
+      </div>
+      <div class="img-block">
+        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="Team">
+      </div>
+    </div>
+
+    <div style="margin-bottom:80px">
+      <div class="section-label">Why JEEVA</div>
+      <h2 class="section-title" style="margin-bottom:40px">Our Commitment</h2>
+      <div class="features-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px">
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px">
+          <div class="feature-icon" style="margin-bottom:16px">🎯</div>
+          <div class="feature-title">Expert Curation</div>
+          <div class="feature-desc" style="margin-top:8px">Every product is personally vetted by our category specialists with 10+ years of experience.</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px">
+          <div class="feature-icon" style="margin-bottom:16px">🌍</div>
+          <div class="feature-title">Global Sourcing</div>
+          <div class="feature-desc" style="margin-top:8px">Products sourced directly from manufacturers across 40+ countries for the best value.</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px">
+          <div class="feature-icon" style="margin-bottom:16px">⚡</div>
+          <div class="feature-title">Fast Delivery</div>
+          <div class="feature-desc" style="margin-top:8px">Same-day delivery in Bengaluru, next-day across major metros, 3-5 days pan-India.</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:24px">
+          <div class="feature-icon" style="margin-bottom:16px">💚</div>
+          <div class="feature-title">Sustainable Packaging</div>
+          <div class="feature-desc" style="margin-top:8px">100% recyclable packaging since 2022. We offset our carbon footprint through verified programs.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:80px">
+      <div class="section-label">The People</div>
+      <h2 class="section-title">Meet the Team</h2>
+      <p class="section-sub">The passionate humans behind every curated product</p>
+      <div class="team-grid">
+        <div class="team-card"><div class="team-card-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt=""></div><div class="team-card-body"><div class="team-card-name">Arjun Mehta</div><div class="team-card-role">Co-founder & CEO</div></div></div>
+        <div class="team-card"><div class="team-card-img"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" alt=""></div><div class="team-card-body"><div class="team-card-name">Priya Sharma</div><div class="team-card-role">Head of Curation</div></div></div>
+        <div class="team-card"><div class="team-card-img"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80" alt=""></div><div class="team-card-body"><div class="team-card-name">Rohan Verma</div><div class="team-card-role">CTO</div></div></div>
+        <div class="team-card"><div class="team-card-img"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80" alt=""></div><div class="team-card-body"><div class="team-card-name">Sneha Iyer</div><div class="team-card-role">VP Marketing</div></div></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:80px">
+      <div class="section-label">Social Proof</div>
+      <h2 class="section-title">What Customers Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><p class="testimonial-text">JEEVA has completely changed how I shop online. The product quality is exceptional — I've never had to return anything. The packaging is also beautiful, like receiving a gift.</p><div class="testimonial-author"><div class="testimonial-avatar">AK</div><div><div class="testimonial-name">Kavaana Shree</div><div class="testimonial-loc">Bengaluru, KA</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><p class="testimonial-text">The curation is what makes JEEVA different. I don't have to scroll through 10,000 mediocre products. Everything listed is genuinely good. Customer support is also top-notch.</p><div class="testimonial-author"><div class="testimonial-avatar">RB</div><div><div class="testimonial-name">Rahul Bhat</div><div class="testimonial-loc">Mumbai, MH</div></div></div></div>
+        <div class="testimonial-card"><div class="testimonial-quote">"</div><p class="testimonial-text">Fast delivery, no nonsense returns, and products that actually match the description. I've been a JEEVA customer since 2020 and will continue being one for years to come.</p><div class="testimonial-author"><div class="testimonial-avatar">SP</div><div><div class="testimonial-name">Pallavi Y</div><div class="testimonial-loc">Chennai, TN</div></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page" id="page-contact">
+  <div class="contact-page">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="#" onclick="navigate('home');return false">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Contact</span>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <div class="section-label">Get in Touch</div>
+          <h1 class="section-title">We'd Love to <br>Hear From You</h1>
+          <p style="color:var(--text2);font-size:0.9rem;line-height:1.7;margin-bottom:32px">Whether you have a question about your order, want to partner with us, or just want to say hello — our team is ready to help.</p>
+          <div class="contact-info-cards">
+            <div class="contact-info-card"><div class="contact-icon">📍</div><div><div class="contact-info-title">Head Office</div><div class="contact-info-val">42, Koramangala 5th Block<br>Bengaluru, Karnataka 560095</div></div></div>
+            <div class="contact-info-card"><div class="contact-icon">📞</div><div><div class="contact-info-title">Phone</div><div class="contact-info-val">+91 80 4567 8900<br>Mon–Sat 9am–7pm IST</div></div></div>
+            <div class="contact-info-card"><div class="contact-icon">✉️</div><div><div class="contact-info-title">Email</div><div class="contact-info-val">hello@jeeva-store.in<br>support@jeeva-store.in</div></div></div>
+            <div class="contact-info-card"><div class="contact-icon">💬</div><div><div class="contact-info-title">Live Chat</div><div class="contact-info-val">Available 24/7 for urgent<br>order support queries</div></div></div>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <div class="form-section-title">Send a Message</div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div class="contact-form-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+              <div class="form-group"><label class="form-label">Your Name *</label><input class="form-input" id="cnt-name" placeholder="Rahul Sharma"><div class="form-error" id="cnt-err-name">Required</div></div>
+              <div class="form-group"><label class="form-label">Email *</label><input class="form-input" id="cnt-email" type="email" placeholder="rahul@example.com"><div class="form-error" id="cnt-err-email">Valid email required</div></div>
+            </div>
+            <div class="form-group"><label class="form-label">Subject *</label>
+              <select class="form-select" id="cnt-subject">
+                <option value="">Select a topic…</option>
+                <option>Order Inquiry</option>
+                <option>Return / Refund</option>
+                <option>Product Question</option>
+                <option>Partnership</option>
+                <option>Feedback</option>
+                <option>Other</option>
+              </select>
+              <div class="form-error" id="cnt-err-subject">Please select a topic</div>
+            </div>
+            <div class="form-group"><label class="form-label">Message *</label><textarea class="form-textarea" id="cnt-message" rows="5" placeholder="Tell us how we can help…"></textarea><div class="form-error" id="cnt-err-msg">Required (min 20 characters)</div></div>
+            <button class="btn btn-primary" style="align-self:flex-start;min-width:160px" onclick="submitContact()">Send Message →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page" id="page-search">
+  <div class="search-page">
+    <div class="container">
+      <div class="search-hero">
+        <div class="section-label">Search</div>
+        <h1 class="section-title" style="margin-bottom:24px">Find What You're Looking For</h1>
+        <div class="search-bar-big">
+          <input type="text" id="search-input-big" placeholder="Search for products, brands, categories…" oninput="liveSearch(this.value)" onkeydown="if(event.key==='Enter')liveSearch(this.value)">
+          <button onclick="liveSearch(document.getElementById('search-input-big').value)">Search</button>
+        </div>
+        <div class="search-chips">
+          <span class="search-chip" onclick="setSearch('headphones')">Headphones</span>
+          <span class="search-chip" onclick="setSearch('sneakers')">Sneakers</span>
+          <span class="search-chip" onclick="setSearch('watch')">Watches</span>
+          <span class="search-chip" onclick="setSearch('bag')">Bags</span>
+          <span class="search-chip" onclick="setSearch('lamp')">Lighting</span>
+          <span class="search-chip" onclick="setSearch('jacket')">Jackets</span>
+        </div>
+      </div>
+      <div id="search-results-wrap"></div>
+    </div>
+  </div>
+</div>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">JEEVA</div>
+        <p class="footer-desc">India's premium curated e-commerce destination. Bringing the world's finest to your doorstep since 2018.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="#" title="Instagram">ig</a>
+          <a class="social-btn" href="#" title="Twitter">tw</a>
+          <a class="social-btn" href="#" title="Facebook">fb</a>
+          <a class="social-btn" href="#" title="LinkedIn">in</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#" onclick="navigate('products');return false">All Products</a></li>
+          <li><a href="#" onclick="navigate('category');return false">Categories</a></li>
+          <li><a href="#" onclick="navigate('search');return false">Search</a></li>
+          <li><a href="#" onclick="navigate('cart');return false">My Cart</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="navigate('about');return false">About Us</a></li>
+          <li><a href="#" onclick="navigate('contact');return false">Contact</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQs</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 JEEVA Commerce Pvt. Ltd. All rights reserved.</p>
+      <span>Made with ♥ in Bengaluru</span>
+    </div>
+  </div>
+</footer>
+
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+
+const CATEGORIES = [
+  {id:'fashion',name:'Fashion',desc:'Clothing, footwear and accessories for every occasion and season.',count:234,color:'#6b4c35',image:'https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80'},
+  {id:'electronics',name:'Electronics',desc:'Cutting-edge gadgets, audio, computing and smart devices.',count:189,color:'#1a3a4a',image:'https://images.unsplash.com/photo-1498049794561-7780e7231661?w=600&q=80'},
+  {id:'home',name:'Home & Living',desc:'Furniture, décor, kitchenware and lifestyle essentials.',count:156,color:'#2a3a2a',image:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80'},
+  {id:'beauty',name:'Beauty & Care',desc:'Skincare, grooming, wellness and personal care products.',count:98,color:'#3a2a3a',image:'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80'},
+  {id:'sports',name:'Sports & Outdoors',desc:'Athletic gear, fitness equipment and outdoor adventure essentials.',count:112,color:'#1a2a3a',image:'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=600&q=80'},
+  {id:'books',name:'Books & Learning',desc:'Bestsellers, professional development and educational resources.',count:267,color:'#3a2a1a',image:'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&q=80'},
+];
+
+const PRODUCTS = [
+  {id:1,name:'Merino Wool Blazer',cat:'fashion',catName:'Fashion',price:3499,oldPrice:4999,rating:4.8,reviews:124,badge:'sale',sizes:['XS','S','M','L','XL'],sku:'JVA-FSH-001',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80','https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=800&q=80','https://images.unsplash.com/photo-1617137968427-85924c800a22?w=800&q=80'],
+   desc:'Crafted from 100% superfine merino wool, this single-breasted blazer offers a tailored silhouette that transitions effortlessly from office meetings to evening events. The breathable natural fiber regulates temperature year-round.',
+   specs:{Material:'100% Superfine Merino Wool',Fit:'Slim/Regular',Care:'Dry clean only',Origin:'Italy'},
+   longDesc:'Sourced from the finest merino fleece from New Zealand\'s south island, this blazer undergoes a 47-step quality control process. The half-canvas construction ensures the lapel rolls beautifully and the jacket maintains its shape for years.',},
+  {id:2,name:'Sony WH-1000XM5 Headphones',cat:'electronics',catName:'Electronics',price:24990,oldPrice:29990,rating:4.9,reviews:892,badge:'sale',sizes:[],sku:'JVA-ELC-002',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80','https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?w=800&q=80'],
+   desc:'Industry-leading noise cancellation with the acclaimed QN1 processor. 30-hour battery life. Eight microphones with AI-based noise isolation. Premium fabric headband and ultra-soft cushions for all-day comfort.',
+   specs:{Driver:'30mm dome',Frequency:'4Hz–40kHz',Noise:'Active Noise Cancellation',Battery:'30 hours',Weight:'250g'},
+   longDesc:'The WH-1000XM5 features an industry-first Dual Noise Sensor Technology with two feedback microphones and one feedforward microphone on each ear cup. The Integrated Processor V1 and the QN1 processor work in tandem to filter more noise across a wider frequency range.'},
+  {id:3,name:'Japandi Table Lamp',cat:'home',catName:'Home & Living',price:2199,oldPrice:2999,rating:4.6,reviews:67,badge:'sale',sizes:[],sku:'JVA-HOM-003',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80','https://images.unsplash.com/photo-1513506003901-1e6a35073a92?w=800&q=80'],
+   desc:'A serene blend of Japanese minimalism and Scandinavian functionality. Solid oak base with hand-woven linen shade. Warm 2700K LED bulb included. USB-C charging port integrated into the base.',
+   specs:{Material:'Oak, Linen',Bulb:'E27 LED 8W included',Color_Temp:'2700K Warm',Height:'42cm',Cable:'1.8m fabric'},
+   longDesc:'The Japandi lamp philosophy is "less, but better." Every curve has been refined over 18 prototypes. The shade is hand-loomed by artisans in Rajasthan using undyed natural linen, giving each lamp a unique texture.'},
+  {id:4,name:'The Ordinary Niacinamide Serum',cat:'beauty',catName:'Beauty & Care',price:649,oldPrice:null,rating:4.7,reviews:1203,badge:'new',sizes:[],sku:'JVA-BTY-004',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=800&q=80','https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800&q=80'],
+   desc:'10% Niacinamide + 1% Zinc formula that visibly minimises the appearance of blemishes and congestion. Suitable for all skin types. Fragrance-free, alcohol-free, oil-free formulation.',
+   specs:{Niacinamide:'10%',Zinc:'1%',Size:'30ml',Skin_Type:'All types',Free_From:'Fragrance, Parabens, Alcohol'},
+   longDesc:'Clinical studies show that the combination of 10% Niacinamide and 1% Zinc helps reduce the appearance of blemishes by 47% in 4 weeks. Our formula uses pharmaceutical-grade ingredients with a pH of 5.5–6.5 for optimal efficacy.'},
+  {id:5,name:'New Balance 990v5',cat:'fashion',catName:'Fashion',price:12999,oldPrice:14999,rating:4.8,reviews:445,badge:'sale',sizes:['UK6','UK7','UK8','UK9','UK10','UK11'],sku:'JVA-FSH-005',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80','https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=800&q=80'],
+   desc:'Made in the USA since 1982. ENCAP midsole technology and premium pigskin/mesh upper. A timeless silhouette that defined the "dad shoe" aesthetic — now an icon of understated luxury.',
+   specs:{Upper:'Pigskin leather + mesh',Midsole:'ENCAP + ABZORB',Outsole:'NDurance rubber',Made:'USA',Width:'D (Standard)'},
+   longDesc:'Every pair of the 990v5 takes 45 minutes to produce by skilled craftspeople in Massachusetts. The ENCAP midsole cushioning system is filled with EVA foam and encapsulated with a polyurethane rim for support. The 990 series has been updated four times since 1982, but the premium materials and meticulous craftsmanship have never wavered.'},
+  {id:6,name:'Leather Crossbody Bag',cat:'fashion',catName:'Fashion',price:4299,oldPrice:5999,rating:4.5,reviews:89,badge:'sale',sizes:[],sku:'JVA-FSH-006',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80','https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800&q=80'],
+   desc:'Full-grain vegetable-tanned leather that develops a rich patina with age. Adjustable cotton canvas strap. Brass hardware. Three compartments including a padded sleeve for 11" tablet.',
+   specs:{Material:'Full-grain vegetable tanned leather',Hardware:'Solid brass',Strap:'Adjustable 90–130cm',Dimensions:'28 x 20 x 8cm'},
+   longDesc:'Vegetable tanning is the oldest and most eco-friendly method of leather production. Our hides are tanned at a single tannery in Tuscany, Italy, using natural extracts from tree bark and plants. The process takes 30–60 days compared to a few hours for chrome tanning.'},
+  {id:7,name:'Apple AirPods Pro (2nd Gen)',cat:'electronics',catName:'Electronics',price:21900,oldPrice:26900,rating:4.8,reviews:2341,badge:'sale',sizes:[],sku:'JVA-ELC-007',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1606741965429-02919b1e0b04?w=800&q=80','https://images.unsplash.com/photo-1588423771073-b8903fead85b?w=800&q=80'],
+   desc:'H2 chip with up to 2x more Active Noise Cancellation. Adaptive Transparency. Personalised Spatial Audio. 30-hour battery with MagSafe case. IPX4 water resistance.',
+   specs:{Chip:'Apple H2',ANC:'Up to 2x improved',Battery:'6h + 24h (case)',Water:'IPX4',Connectivity:'Bluetooth 5.3'},
+   longDesc:'The second-generation AirPods Pro use the all-new Apple H2 chip to achieve extraordinary audio performance. The H2 chip provides a 48-kilohertz audio processing rate, delivering twice the computational power of the original AirPods Pro for dramatically improved noise cancellation and audio quality.'},
+  {id:8,name:'Ceramic Pour-Over Set',cat:'home',catName:'Home & Living',price:1899,oldPrice:null,rating:4.7,reviews:156,badge:'new',sizes:[],sku:'JVA-HOM-008',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80','https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800&q=80'],
+   desc:'Artisanal stoneware dripper with matching server and wooden collar. Hand-thrown in Jaipur by master ceramicists. The slightly rough interior texture helps create the perfect extraction for a clean, bright cup.',
+   specs:{Material:'High-fire stoneware',Capacity:'600ml server',Compatible:'1–4 cups',Care:'Dishwasher safe',Origin:'Jaipur, India'},
+   longDesc:'Each pour-over set is individually wheel-thrown, fired twice at 1280°C, and inspected by hand. The slight variations in glaze and form are features, not defects — evidence of genuine human craft in an age of mass production.'},
+  {id:9,name:'Running Shorts Pro',cat:'sports',catName:'Sports & Outdoors',price:1599,oldPrice:2199,rating:4.6,reviews:334,badge:'sale',sizes:['XS','S','M','L','XL','XXL'],sku:'JVA-SPT-009',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80'],
+   desc:'4-way stretch fabric with moisture-wicking technology. Built-in compression liner with 5" outer shell. Zippered rear pocket. Reflective piping for low-light visibility.',
+   specs:{Fabric:'88% Recycled Polyester, 12% Elastane',Length:'5 inch',Features:'Built-in liner, zip pocket',Care:'Machine wash 30°C'},
+   longDesc:'Our engineering team worked with 47 runners across 3 years to perfect this short. The 4-way stretch pattern allows unrestricted movement in all planes while the compression liner prevents chafing on runs of any distance.'},
+  {id:10,name:'Atomic Habits — James Clear',cat:'books',catName:'Books & Learning',price:399,oldPrice:599,rating:4.9,reviews:15672,badge:'hot',sizes:[],sku:'JVA-BKS-010',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800&q=80','https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80'],
+   desc:'The definitive guide to making good habits inevitable and bad ones impossible. Over 10 million copies sold worldwide. Paperback, 319 pages, revised edition with new bonus content.',
+   specs:{Author:'James Clear',Pages:319,Publisher:'Random House',ISBN:'978-0735211292',Language:'English'},
+   longDesc:'James Clear, one of the world\'s leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results. Based on proven ideas from biology, psychology, and neuroscience.'},
+  {id:11,name:'Vitamin C Face Moisturizer',cat:'beauty',catName:'Beauty & Care',price:1199,oldPrice:1599,rating:4.5,reviews:445,badge:'sale',sizes:[],sku:'JVA-BTY-011',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&q=80'],
+   desc:'Brightening daily moisturiser with 15% stabilised Vitamin C derivative, Hyaluronic Acid and Niacinamide. SPF 30 protection. Lightweight non-greasy formula.',
+   specs:{Vitamin_C:'15% Ascorbyl Glucoside',SPF:30,Size:'50ml',Skin_Type:'All types',Free_From:'Parabens'},
+   longDesc:'Our Vitamin C is stabilised as Ascorbyl Glucoside, which converts to pure Vitamin C on contact with skin enzymes. Unlike pure Ascorbic Acid which oxidises quickly, this stable form remains active throughout the product\'s shelf life.'},
+  {id:12,name:'Yoga Mat Premium',cat:'sports',catName:'Sports & Outdoors',price:2899,oldPrice:3599,rating:4.7,reviews:567,badge:'sale',sizes:[],sku:'JVA-SPT-012',stock:'In Stock',
+   images:['https://images.unsplash.com/photo-1601925228008-23b1ca31d804?w=800&q=80','https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80'],
+   desc:'6mm thick natural rubber mat with alignment lines printed using water-based inks. Non-slip microfiber top surface. Carrying strap included. Supports all styles from hot yoga to restorative.',
+   specs:{Material:'Natural rubber + Microfiber',Thickness:'6mm',Dimensions:'183 x 61cm',Weight:'2.5kg',Grip:'Non-slip dual layer'},
+   longDesc:'The mat is harvested from sustainable rubber tree plantations in Sri Lanka certified by the Forest Stewardship Council. The manufacturing process is closed-loop — all rubber scraps are recycled back into the production process.'},
+];
+
+
+let cart = JSON.parse(localStorage.getItem('jeeva_cart')||'[]');
+let currentProduct = null;
+let currentPage = 'home';
+let selectedFilters = {categories:[], maxPrice:5000, ratings:[]};
+let heroInterval;
+
+
+function navigate(page, productId) {
+
+  document.body.style.overflow = '';
+  document.body.style.height = '';
+  document.documentElement.style.overflow = '';
+
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('active', a.dataset.page===page);
+  });
+  currentPage = page;
+
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
+  window.scrollTo(0,0);
+
+  if(page==='home') renderHome();
+  else if(page==='products') renderProducts();
+  else if(page==='product-view' && productId) renderProductView(productId);
+  else if(page==='category') renderCategoryPage();
+  else if(page==='cart') renderCart();
+  else if(page==='checkout') renderCheckout();
+  else if(page==='search') renderSearch();
+}
+
+
+let heroSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+
+function initSlider() {
+  const dotsEl = document.getElementById('slider-dots');
+  dotsEl.innerHTML = '';
+  slides.forEach((s,i) => {
+    const d = document.createElement('div');
+    d.className = 'slider-dot'+(i===0?' active':'');
+    d.onclick = ()=>goSlide(i);
+    dotsEl.appendChild(d);
+  });
+  heroInterval = setInterval(()=>slideDir(1), 5000);
+}
+
+function slideDir(dir) {
+  goSlide((heroSlide + dir + slides.length) % slides.length);
+}
+
+function goSlide(n) {
+  slides[heroSlide].classList.remove('active');
+  document.querySelectorAll('.slider-dot')[heroSlide].classList.remove('active');
+  heroSlide = n;
+  slides[heroSlide].classList.add('active');
+  document.querySelectorAll('.slider-dot')[heroSlide].classList.add('active');
+}
+
+
+function renderHome() {
+
+  const cg = document.getElementById('home-categories');
+  cg.innerHTML = CATEGORIES.map(c=>`
+    <div class="category-card" onclick="navigateCategory('${c.id}')">
+      <div class="category-card-bg" style="background-image:url('${c.image}')"></div>
+      <div class="category-card-body">
+        <div class="category-card-name">${c.name}</div>
+        <div class="category-card-count">${c.count} items</div>
+      </div>
+      <div class="category-card-arrow">→</div>
+    </div>
+  `).join('');
+
+  const hp = document.getElementById('home-products');
+  hp.innerHTML = PRODUCTS.slice(0,8).map(renderProductCard).join('');
+}
+
+function navigateCategory(catId) {
+  selectedFilters.categories = [catId];
+  navigate('products');
+}
+
+function renderProductCard(p) {
+  const discount = p.oldPrice ? Math.round((1-p.price/p.oldPrice)*100) : 0;
+  const stars = renderStars(p.rating);
+  return `
+  <div class="product-card" onclick="navigate('product-view','${p.id}')">
+    <div class="product-card-img">
+      <img src="${p.images[0]}" alt="${p.name}" loading="lazy">
+      <div class="product-card-badges">
+        ${p.badge==='sale'?'<span class="badge badge-sale">-'+discount+'%</span>':''}
+        ${p.badge==='new'?'<span class="badge badge-new">New</span>':''}
+        ${p.badge==='hot'?'<span class="badge badge-hot">Hot</span>':''}
+      </div>
+      <div class="product-card-actions">
+        <button class="card-action-btn" onclick="event.stopPropagation();quickAddCart(${p.id})" title="Add to Cart">🛒</button>
+        <button class="card-action-btn" onclick="event.stopPropagation();navigate('product-view','${p.id}')" title="View">👁</button>
+      </div>
+    </div>
+    <div class="product-card-body">
+      <div class="product-card-cat">${p.catName}</div>
+      <div class="product-card-name">${p.name}</div>
+      <div class="product-card-footer">
+        <div>
+          <span class="product-price">₹${p.price.toLocaleString()}</span>
+          ${p.oldPrice?`<span class="product-price-old">₹${p.oldPrice.toLocaleString()}</span>`:''}
+        </div>
+        <div class="stars">${stars}<span>${p.rating}</span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderStars(r) {
+  return [1,2,3,4,5].map(i=>i<=Math.floor(r)?'★':'☆').join('');
+}
+
+
+function renderProducts() {
+
+  const cf = document.getElementById('category-filter');
+  cf.innerHTML = CATEGORIES.map(c=>`
+    <label class="filter-option">
+      <input type="checkbox" value="${c.id}" ${selectedFilters.categories.includes(c.id)?'checked':''} onchange="toggleCategoryFilter('${c.id}',this.checked)">
+      <label>${c.name}</label>
+      <span class="filter-option-count">${c.count}</span>
+    </label>
+  `).join('');
+
+
+  const rf = document.getElementById('rating-filter');
+  rf.innerHTML = [4,3,2,1].map(r=>`
+    <label class="filter-option">
+      <input type="checkbox" value="${r}" ${selectedFilters.ratings.includes(r)?'checked':''} onchange="toggleRatingFilter(${r},this.checked)">
+      <label>${'★'.repeat(r)}${'☆'.repeat(5-r)} & up</label>
+    </label>
+  `).join('');
+
+  applyFilters();
+}
+
+function toggleCategoryFilter(id, checked) {
+  if(checked) { if(!selectedFilters.categories.includes(id)) selectedFilters.categories.push(id); }
+  else selectedFilters.categories = selectedFilters.categories.filter(c=>c!==id);
+  applyFilters();
+}
+
+function toggleRatingFilter(r, checked) {
+  if(checked) { if(!selectedFilters.ratings.includes(r)) selectedFilters.ratings.push(r); }
+  else selectedFilters.ratings = selectedFilters.ratings.filter(x=>x!==r);
+  applyFilters();
+}
+
+function updatePriceFilter(val) {
+  selectedFilters.maxPrice = parseInt(val);
+  document.getElementById('price-max-label').textContent = '₹'+parseInt(val).toLocaleString();
+  document.getElementById('price-max-inp').value = val;
+  applyFilters();
+}
+
+function clearFilters() {
+  selectedFilters = {categories:[], maxPrice:5000, ratings:[]};
+  document.querySelectorAll('#category-filter input').forEach(i=>i.checked=false);
+  document.querySelectorAll('#rating-filter input').forEach(i=>i.checked=false);
+  document.getElementById('price-range').value = 5000;
+  document.getElementById('price-max-label').textContent = '₹5,000';
+  document.getElementById('price-max-inp').value = 5000;
+  applyFilters();
+}
+
+function applyFilters() {
+  let filtered = [...PRODUCTS];
+  if(selectedFilters.categories.length) filtered = filtered.filter(p=>selectedFilters.categories.includes(p.cat));
+  filtered = filtered.filter(p=>p.price <= selectedFilters.maxPrice);
+  if(selectedFilters.ratings.length) filtered = filtered.filter(p=>selectedFilters.ratings.some(r=>p.rating>=r));
+
+  const sort = document.getElementById('sort-select')?.value || 'default';
+  if(sort==='price-asc') filtered.sort((a,b)=>a.price-b.price);
+  else if(sort==='price-desc') filtered.sort((a,b)=>b.price-a.price);
+  else if(sort==='rating') filtered.sort((a,b)=>b.rating-a.rating);
+  else if(sort==='newest') filtered.sort((a,b)=>b.id-a.id);
+
+  document.getElementById('results-count').textContent = `Showing ${filtered.length} product${filtered.length!==1?'s':''}`;
+  
+  // Active filters tags
+  const af = document.getElementById('active-filters');
+  af.innerHTML = selectedFilters.categories.map(c=>{
+    const cat = CATEGORIES.find(x=>x.id===c);
+    return `<span class="active-filter">${cat.name}<button onclick="toggleCategoryFilter('${c}',false);document.querySelector('#category-filter input[value=${c}]').checked=false">×</button></span>`;
+  }).join('');
+  if(selectedFilters.maxPrice < 5000) af.innerHTML += `<span class="active-filter">Under ₹${selectedFilters.maxPrice.toLocaleString()}<button onclick="updatePriceFilter(5000);document.getElementById('price-range').value=5000">×</button></span>`;
+
+  const grid = document.getElementById('products-grid');
+  grid.innerHTML = filtered.length ? filtered.map(renderProductCard).join('') : '<div style="color:var(--text2);padding:40px;grid-column:1/-1;text-align:center">No products match your filters.</div>';
+}
+
+
+
+function renderProductView(id) {
+  const p = PRODUCTS.find(x=>x.id==id);
+  if(!p) return;
+  currentProduct = p;
+
+  document.getElementById('product-view-name').textContent = p.name;
+  document.getElementById('pv-cat').textContent = p.catName;
+  document.getElementById('pv-title').textContent = p.name;
+  document.getElementById('pv-stars').innerHTML = renderStars(p.rating)+'<span style="color:var(--text3);font-size:0.8rem"> '+p.rating+'</span>';
+  document.getElementById('pv-rating-count').textContent = `(${p.reviews.toLocaleString()} reviews)`;
+  document.getElementById('pv-price').textContent = '₹'+p.price.toLocaleString();
+  document.getElementById('pv-sku').textContent = p.sku;
+  document.getElementById('pv-meta-cat').textContent = p.catName;
+  document.getElementById('pv-stock').textContent = p.stock;
+  
+  const oldEl = document.getElementById('pv-old-price');
+  const saveEl = document.getElementById('pv-save');
+  if(p.oldPrice) {
+    oldEl.textContent = '₹'+p.oldPrice.toLocaleString();
+    const save = Math.round((1-p.price/p.oldPrice)*100);
+    saveEl.textContent = 'Save '+save+'%';
+    saveEl.style.display='inline-block';
+  } else {
+    oldEl.textContent='';
+    saveEl.style.display='none';
+  }
+
+  document.getElementById('gallery-main-img').src = p.images[0];
+  const thumbsEl = document.getElementById('gallery-thumbs');
+  thumbsEl.innerHTML = p.images.map((img,i)=>`
+    <div class="gallery-thumb ${i===0?'active':''}" onclick="switchGallery('${img}',this)">
+      <img src="${img}" alt="" loading="lazy">
+    </div>
+  `).join('');
+
+  const sizesWrap = document.getElementById('pv-sizes-wrap');
+  const sizesEl = document.getElementById('pv-sizes');
+  if(p.sizes.length) {
+    sizesWrap.style.display='block';
+    sizesEl.innerHTML = p.sizes.map((s,i)=>`<button class="size-btn ${i===0?'active':''}" onclick="selectSize(this)">${s}</button>`).join('');
+  } else {
+    sizesWrap.style.display='none';
+  }
+
+  document.getElementById('pv-desc').textContent = p.desc;
+  document.getElementById('tab-description').innerHTML = `<p>${p.longDesc || p.desc}</p>`;
+  
+  const specRows = Object.entries(p.specs).map(([k,v])=>`
+    <div style="display:flex;gap:24px;padding:10px 0;border-bottom:1px solid var(--border);font-size:0.875rem">
+      <span style="color:var(--text3);width:140px;flex-shrink:0">${k.replace(/_/g,' ')}</span>
+      <span style="color:var(--text2)">${v}</span>
+    </div>
+  `).join('');
+  document.getElementById('tab-specifications').innerHTML = `<div>${specRows}</div>`;
+
+  const reviews = generateReviews(p.id, 4);
+  document.getElementById('reviews-list').innerHTML = reviews.map(r=>`
+    <div class="review-item">
+      <div class="review-header">
+        <div class="review-avatar">${r.name[0]}</div>
+        <div>
+          <div class="review-author">${r.name}</div>
+          <div class="review-date">${r.date}</div>
+        </div>
+        <div class="stars" style="margin-left:auto">${renderStars(r.rating)}</div>
+      </div>
+      <p class="review-text">${r.text}</p>
+    </div>
+  `).join('');
+
+  document.getElementById('pv-qty').value = 1;
+
+  const related = PRODUCTS.filter(x=>x.cat===p.cat && x.id!==p.id).slice(0,4);
+  document.getElementById('related-products').innerHTML = related.map(renderProductCard).join('');
+  
+  switchTab('description');
+}
+
+function generateReviews(seed, count) {
+  const names = ['Rahul K.','Sneha M.','Arjun T.','Priya V.','Kiran S.','Deepa N.'];
+  const texts = [
+    'Absolutely love this product. Quality is exactly as described and delivery was very fast. Highly recommend!',
+    'Great value for money. The build quality is impressive. Will definitely order again from JEEVA.',
+    'Perfect for everyday use. Looks even better in person than in the photos. Very happy with my purchase.',
+    'Exceeded my expectations! Packaging was beautiful and the product works flawlessly.',
+  ];
+  const dates = ['12 May 2025','3 Apr 2025','18 Mar 2025','2 Feb 2025'];
+  return Array.from({length:count},(_,i)=>({
+    name:names[(seed+i)%names.length],
+    rating:5-Math.floor(i*0.4),
+    text:texts[i%texts.length],
+    date:dates[i%dates.length],
+  }));
+}
+
+function switchGallery(src, el) {
+  document.getElementById('gallery-main-img').src = src;
+  document.querySelectorAll('.gallery-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function selectSize(btn) {
+  document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function changeQty(dir) {
+  const inp = document.getElementById('pv-qty');
+  const val = Math.max(1, Math.min(10, parseInt(inp.value||1) + dir));
+  inp.value = val;
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active',b.getAttribute('onclick').includes("'"+name+"'")));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+}
+
+
+function renderCategoryPage() {
+  const grid = document.getElementById('cat-list-grid');
+  grid.innerHTML = CATEGORIES.map(c=>`
+    <div class="cat-list-card" onclick="navigateCategory('${c.id}')">
+      <div class="cat-list-card-img">
+        <img src="${c.image}" alt="${c.name}" loading="lazy">
+      </div>
+      <div class="cat-list-card-body">
+        <div class="cat-list-card-name">${c.name}</div>
+        <p class="cat-list-card-desc">${c.desc}</p>
+        <div class="cat-list-card-footer">
+          <span class="cat-list-card-count">${c.count} products</span>
+          <span style="font-size:0.8rem;color:var(--accent)">Browse →</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+
+async function addToCart(productId, qty = 1, size = '') {
+  const p = PRODUCTS.find(x => x.id == productId);
+  if (!p) return;
+
+  let mongoId = null;
+
+  // Attempt to fetch real MongoDB _id from backend
+  try {
+    const res = await fetch(
+      `http://localhost:5000/api/products?search=${encodeURIComponent(p.name)}`,
+      { headers: { 'Content-Type': 'application/json' } }
+    );
+    const data = await res.json();
+    if (data.success && data.products && data.products.length > 0) {
+      const match = data.products.find(b => b.name.toLowerCase() === p.name.toLowerCase()) || data.products[0];
+      mongoId = match._id;
+    }
+  } catch (e) {
+    console.warn('Could not query backend ID, proceeding with local cart logic:', e);
+  }
+
+  const key = productId + '_' + (size || 'default');
+  const existing = cart.find(i => i.key === key);
+
+  if (existing) {
+    existing.qty = Math.min(10, existing.qty + qty);
+  } else {
+    cart.push({
+      key,
+      productId: productId,
+      mongoId:   mongoId,
+      qty,
+      size,
+      name:      p.name,
+      price:     p.price,
+      img:       p.images[0],
+      cat:       p.catName,
+    });
+  }
+  saveCart();
+  showToast('Added to cart ✓', 'success');
+}
+
+function quickAddCart(productId) {
+  addToCart(productId, 1);
+}
+
+async function addCurrentToCart() {
+  if (!currentProduct) return;
+  const qty = parseInt(document.getElementById('pv-qty').value) || 1;
+  const sizeBtn = document.querySelector('.size-btn.active');
+  const size = sizeBtn ? sizeBtn.textContent : '';
+  await addToCart(currentProduct.id, qty, size);
+}
+
+function saveCart() {
+  localStorage.setItem('jeeva_cart', JSON.stringify(cart));
+  updateCartBadge();
+}
+
+function updateCartBadge() {
+  const total = cart.reduce((s,i)=>s+i.qty, 0);
+  document.getElementById('cart-badge').textContent = total;
+}
+
+function renderCart() {
+  const el = document.getElementById('cart-content');
+  if(!cart.length) {
+    el.innerHTML = `
+      <div class="empty-cart">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <h3>Your cart is empty</h3>
+        <p>Looks like you haven't added anything yet. Start shopping!</p>
+        <button class="btn btn-primary" onclick="navigate('products')">Start Shopping →</button>
+      </div>`;
+    return;
+  }
+  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const shipping = subtotal >= 999 ? 0 : 99;
+  const total = subtotal + shipping;
+
+  el.innerHTML = `
+    <div class="cart-layout">
+      <div class="cart-items">
+        ${cart.map(item=>`
+          <div class="cart-item" id="ci-${item.key}">
+            <div class="cart-item-img"><img src="${item.img}" alt="${item.name}"></div>
+            <div class="cart-item-info">
+              <div class="cart-item-cat">${item.cat}</div>
+              <div class="cart-item-name">${item.name}</div>
+              ${item.size?`<div class="cart-item-size">Size: ${item.size}</div>`:''}
+            </div>
+            <div class="cart-item-actions">
+              <div class="cart-item-qty">
+                <button class="cart-qty-btn" onclick="updateCartQty('${item.key}',-1)">−</button>
+                <input class="cart-qty-val" type="number" value="${item.qty}" min="1" max="10" onchange="setCartQty('${item.key}',this.value)">
+                <button class="cart-qty-btn" onclick="updateCartQty('${item.key}',1)">+</button>
+              </div>
+              <div class="cart-item-price">₹${(item.price*item.qty).toLocaleString()}</div>
+              <button class="cart-item-remove" onclick="removeFromCart('${item.key}')">✕</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="cart-summary">
+        <div class="summary-title">Order Summary</div>
+        <div class="summary-row"><span>Subtotal (${cart.reduce((s,i)=>s+i.qty,0)} items)</span><span>₹${subtotal.toLocaleString()}</span></div>
+        <div class="summary-row"><span>Shipping</span><span>${shipping===0?'<span style="color:var(--green)">Free</span>':'₹'+shipping}</span></div>
+        <div class="coupon-row">
+          <input class="coupon-input" placeholder="Coupon code">
+          <button class="btn btn-outline btn-sm" onclick="showToast('Invalid or expired coupon')">Apply</button>
+        </div>
+        <div class="summary-row total"><span>Total</span><span class="price">₹${total.toLocaleString()}</span></div>
+        ${shipping>0?`<p style="font-size:0.75rem;color:var(--green);margin-bottom:12px">Add ₹${(999-subtotal).toLocaleString()} more for free shipping</p>`:''}
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:12px" onclick="navigate('checkout')">Proceed to Checkout →</button>
+        <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;margin-top:8px" onclick="navigate('products')">Continue Shopping</button>
+      </div>
+    </div>`;
+}
+
+function updateCartQty(key, dir) {
+  const item = cart.find(i=>i.key===key);
+  if(!item) return;
+  item.qty = Math.max(1, Math.min(10, item.qty+dir));
+  saveCart();
+  renderCart();
+}
+
+function setCartQty(key, val) {
+  const item = cart.find(i=>i.key===key);
+  if(!item) return;
+  item.qty = Math.max(1, Math.min(10, parseInt(val)||1));
+  saveCart();
+  renderCart();
+}
+
+function removeFromCart(key) {
+  cart = cart.filter(i=>i.key!==key);
+  saveCart();
+  renderCart();
+}
+
+
+function renderCheckout() {
+  const itemsEl = document.getElementById('checkout-items-list');
+  const rowsEl = document.getElementById('checkout-summary-rows');
+  const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const shipping = subtotal >= 999 ? 0 : 99;
+  const total = subtotal + shipping;
+
+  itemsEl.innerHTML = cart.map(item=>`
+    <div class="checkout-item">
+      <div class="checkout-item-img">
+        <img src="${item.img}" alt="${item.name}">
+        <div class="checkout-item-qty-badge">${item.qty}</div>
+      </div>
+      <div class="checkout-item-info">
+        <div class="checkout-item-name">${item.name}</div>
+        ${item.size?`<div class="checkout-item-size">${item.size}</div>`:''}
+      </div>
+      <div class="checkout-item-price">₹${(item.price*item.qty).toLocaleString()}</div>
+    </div>
+  `).join('');
+
+  rowsEl.innerHTML = `
+    <div class="summary-row"><span>Subtotal</span><span>₹${subtotal.toLocaleString()}</span></div>
+    <div class="summary-row"><span>Shipping</span><span>${shipping===0?'<span style="color:var(--green)">Free</span>':'₹'+shipping}</span></div>
+    <div class="summary-row total"><span>Total</span><span class="price">₹${total.toLocaleString()}</span></div>
+  `;
+}
+
+function selectPayment(el) {
+  document.querySelectorAll('.payment-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+async function placeOrder() {
+  // ── Validate form ─────────────────────────────
+  const fields = [
+    {id:'cf-fname',   err:'err-fname',   test:v=>v.trim().length>1},
+    {id:'cf-lname',   err:'err-lname',   test:v=>v.trim().length>1},
+    {id:'cf-email',   err:'err-email',   test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},
+    {id:'cf-phone',   err:'err-phone',   test:v=>v.trim().length>7},
+    {id:'cf-address', err:'err-address', test:v=>v.trim().length>5},
+    {id:'cf-city',    err:'err-city',    test:v=>v.trim().length>1},
+    {id:'cf-state',   err:'err-state',   test:v=>v.trim().length>0},
+    {id:'cf-pin',     err:'err-pin',     test:v=>/^\d{6}$/.test(v.trim())},
+  ];
+  let valid = true;
+  fields.forEach(f => {
+    const inp = document.getElementById(f.id);
+    const err = document.getElementById(f.err);
+    if (!f.test(inp.value)) {
+      inp.classList.add('error');
+      if(err) err.classList.add('show');
+      valid = false;
+    } else {
+      inp.classList.remove('error');
+      if(err) err.classList.remove('show');
+    }
+  });
+  if (!valid) { showToast('Please fill all required fields'); return; }
+
+  // ── Must be logged in ─────────────────────────
+  if (!localStorage.getItem('jeeva_token')) {
+    showToast('Please log in to place an order');
+    setTimeout(() => window.location.href = 'login.html', 1500);
+    return;
+  }
+
+  // ── Cart must not be empty ────────────────────
+  if (!cart || cart.length === 0) {
+    showToast('Your cart is empty'); return;
+  }
+
+  // ── Disable button ────────────────────────────
+  const btn = document.querySelector('#page-checkout .btn-primary');
+  if (btn) { btn.disabled = true; btn.textContent = 'Placing Order...'; }
+
+  try {
+    // ── Get real MongoDB _id for each product ──
+    const enrichedItems = [];
+    for (const item of cart) {
+      try {
+        const res = await fetch(
+          `http://localhost:5000/api/products?search=${encodeURIComponent(item.name)}`,
+          { headers: { 'Content-Type': 'application/json' } }
+        );
+        const data = await res.json();
+        if (data.success && data.products && data.products.length > 0) {
+          const match = data.products.find(p =>
+            p.name.toLowerCase() === item.name.toLowerCase()
+          ) || data.products[0];
+          enrichedItems.push({
+            productId: match._id,   // ← real MongoDB ObjectId
+            qty:       item.qty,
+            size:      item.size || '',
+            name:      item.name,
+          });
+        } else {
+          throw new Error('Product not found: ' + item.name);
+        }
+      } catch (e) {
+        showToast('Error finding product: ' + item.name);
+        if (btn) { btn.disabled = false; btn.textContent = 'Place Order →'; }
+        return;
+      }
+    }
+
+    // ── Build final order payload ─────────────
+    const orderPayload = {
+      items: enrichedItems,
+      shipping: {
+        firstName: document.getElementById('cf-fname').value.trim(),
+        lastName:  document.getElementById('cf-lname').value.trim(),
+        email:     document.getElementById('cf-email').value.trim(),
+        phone:     document.getElementById('cf-phone').value.trim(),
+        address:   document.getElementById('cf-address').value.trim(),
+        city:      document.getElementById('cf-city').value.trim(),
+        state:     document.getElementById('cf-state').value.trim(),
+        pincode:   document.getElementById('cf-pin').value.trim(),
+        notes:     document.getElementById('cf-notes')?.value.trim() || '',
+      },
+      paymentMethod: document.querySelector('input[name="payment"]:checked')?.value || 'cod',
+      couponCode:    '',
+      useWallet:     false,
+    };
+
+    // ── Send to backend ───────────────────────
+    const token = localStorage.getItem('jeeva_token');
+    const response = await fetch('http://localhost:5000/api/orders', {
+      method:  'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+      body: JSON.stringify(orderPayload),
+    });
+
+    const data = await response.json();
+    if (!data.success) throw new Error(data.message);
+
+    // ── Fill confirmation page ────────────────
+    document.getElementById('conf-order-num').textContent = '#' + data.order.orderNumber;
+
+    const fname    = document.getElementById('cf-fname').value.trim();
+    const lname    = document.getElementById('cf-lname').value.trim();
+    const city     = document.getElementById('cf-city').value.trim();
+    const state    = document.getElementById('cf-state').value.trim();
+    const payMethod= orderPayload.paymentMethod.toUpperCase();
+
+    document.getElementById('conf-details').innerHTML = `
+      <div class="confirm-detail-row">
+        <span class="k">Customer</span>
+        <span class="v">${fname} ${lname}</span>
+      </div>
+      <div class="confirm-detail-row">
+        <span class="k">Shipping to</span>
+        <span class="v">${city}, ${state}</span>
+      </div>
+      <div class="confirm-detail-row">
+        <span class="k">Items</span>
+        <span class="v">${cart.reduce((s,i) => s+i.qty, 0)} items</span>
+      </div>
+      <div class="confirm-detail-row">
+        <span class="k">Payment</span>
+        <span class="v">${payMethod}</span>
+      </div>
+      <div class="confirm-detail-row">
+        <span class="k">Total Paid</span>
+        <span class="v" style="color:var(--accent);font-family:'DM Mono',monospace">
+          ₹${data.order.total.toLocaleString()}
+        </span>
+      </div>
+      <div class="confirm-detail-row">
+        <span class="k">Status</span>
+        <span class="v" style="color:var(--green)">✅ ${data.order.status}</span>
+      </div>
+      <div class="confirm-detail-row">
+        <span class="k">Expected</span>
+        <span class="v">3–5 business days</span>
+      </div>
+    `;
+
+    // ── Clear cart & navigate ─────────────────
+    cart = [];
+    saveCart();
+    showToast('Order placed successfully! ✦', 'success');
+    navigate('order-confirmation');
+
+  } catch (err) {
+    console.error('Order failed:', err);
+    showToast(err.message || 'Order failed. Please try again.');
+    if (btn) { btn.disabled = false; btn.textContent = 'Place Order →'; }
+  }
+}
+
+function renderSearch() {
+  document.getElementById('search-results-wrap').innerHTML = '';
+}
+
+function liveSearch(q) {
+  const query = q.toLowerCase().trim();
+  const wrap = document.getElementById('search-results-wrap');
+  if(!query) { wrap.innerHTML=''; return; }
+  
+  const results = PRODUCTS.filter(p=>
+    p.name.toLowerCase().includes(query) ||
+    p.catName.toLowerCase().includes(query) ||
+    p.desc.toLowerCase().includes(query)
+  );
+
+  wrap.innerHTML = `
+    <div class="search-results-info">
+      <span>${results.length} result${results.length!==1?'s':''} for <span class="search-query">"${q}"</span></span>
+    </div>
+    ${results.length
+      ? `<div class="products-grid">${results.map(renderProductCard).join('')}</div>`
+      : `<div class="no-results"><div class="no-results-icon">🔍</div><p>No products found for "${q}".<br>Try different keywords or browse our <a href="#" onclick="navigate('category');return false" style="color:var(--accent)">categories</a>.</p></div>`
+    }`;
+}
+
+function setSearch(q) {
+  document.getElementById('search-input-big').value = q;
+  liveSearch(q);
+}
+
+function doNavSearch() {
+  const q = document.getElementById('nav-search-input').value;
+  if(!q.trim()) return;
+  navigate('search');
+  setTimeout(()=>setSearch(q), 50);
+}
+
+
+function submitContact() {
+  const fields = [
+    {id:'cnt-name',err:'cnt-err-name',test:v=>v.trim().length>1},
+    {id:'cnt-email',err:'cnt-err-email',test:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)},
+    {id:'cnt-subject',err:'cnt-err-subject',test:v=>v.trim().length>0},
+    {id:'cnt-message',err:'cnt-err-msg',test:v=>v.trim().length>=20},
+  ];
+  let valid = true;
+  fields.forEach(f=>{
+    const inp = document.getElementById(f.id);
+    const err = document.getElementById(f.err);
+    if(!f.test(inp.value)) {
+      inp.classList.add('error');
+      err.classList.add('show');
+      valid = false;
+    } else {
+      inp.classList.remove('error');
+      err.classList.remove('show');
+    }
+  });
+  if(!valid) { showToast('Please complete all required fields'); return; }
+  
+  ['cnt-name','cnt-email','cnt-subject','cnt-message'].forEach(id=>document.getElementById(id).value='');
+  showToast('Message sent! We\'ll get back to you within 24 hours ✓','success');
+}
+
+
+let toastTimer;
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'show '+(type||'');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.className='', 3000);
+}
+
+
+window.addEventListener('scroll',()=>{
+  const btn = document.getElementById('scroll-top');
+  btn.classList.toggle('visible', window.scrollY > 300);
+});
+
+
+function toggleMobile() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+
+
+document.addEventListener('DOMContentLoaded',()=>{
+
+  document.documentElement.style.overflow = '';
+  document.documentElement.style.height = '';
+  document.body.style.overflow = '';
+  document.body.style.height = '';
+  document.body.style.position = '';
+
+  initSlider();
+  renderHome();
+  updateCartBadge();
+  navigate('home');
+});
+</script>
+</body>
+</html>
